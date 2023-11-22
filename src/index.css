@@ -3,37 +3,37 @@
 @tailwind utilities;
 
 body {
-  @apply text-[#52331a] bg-[#ece5db];
-  font-family: 'Playfair Display', serif;
+    @apply text-[#52331a] bg-[#ece5db];
+    font-family: 'Playfair Display', serif;
 
-  -webkit-touch-callout: none !important;
+    -webkit-touch-callout: none !important;
 }
 
 a,
 img {
-  -webkit-user-select: none !important;
+    -webkit-user-select: none !important;
 }
 
 .font-writing {
-  font-family: 'Dancing Script', cursive;
+    font-family: 'Dancing Script', cursive;
 }
 
 .font-writing-2 {
-  font-family: 'Marcellus', serif;
+    font-family: 'Marcellus', serif;
 }
 
 .countdown-photo-container::after {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  width: 100%;
-  height: 100%;
-  background-image: linear-gradient(180deg, rgba(125, 98, 34, 0) 0%, rgb(255, 207, 150) 100%);
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    width: 100%;
+    height: 100%;
+    background-image: linear-gradient(180deg, rgba(125, 98, 34, 0) 0%, rgb(255, 207, 150) 100%);
 }
 
 .fillable-height {
-  max-height: -webkit-fill-available;
+    max-height: -webkit-fill-available;
 }
