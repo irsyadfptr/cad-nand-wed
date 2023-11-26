@@ -42,8 +42,8 @@ export default function SectionMessage({ name }) {
 
     return (
         <section className="px-8 py-20 flex flex-col relative  items-center overflow-hidden bg-white">
-            <img src="/orn-flower-1.png" alt="" className="absolute top-0 w-40 -left-8" />
-            <img src="/orn-flower-3.png" alt="" className="absolute w-32 top-4 -right-8" />
+            {/* <img src="/orn-flower-1.png" alt="" className="absolute top-0 w-40 -left-8" />
+            <img src="/orn-flower-3.png" alt="" className="absolute w-32 top-4 -right-8" /> */}
 
             <div className="z-20 flex flex-col w-full gap-4">
                 <div data-aos="zoom-in-up" data-aos-duration="1000" data-aos-once="true" className="flex flex-col text-center text-[#52331a]">

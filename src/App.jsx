@@ -15,9 +15,7 @@ import SectionCouple from './components/SectionCouple';
 import SectionItsTheDay from './components/SectionItsTheDay';
 import SectionDigitalEnvelop from './components/SectionDigitalEnvelop';
 import SectionGallery from './components/SectionGallery';
-import SectionStory from './components/SectionStory';
 import SectionFin from './components/SectionFin';
-import SectionInstagramFilter from './components/SectionInstagramFilter';
 import SectionMessage from './components/SectionMessage';
 
 function App() {
@@ -99,9 +97,9 @@ function App() {
                     <SectionIntro name={name} />
                     <SectionAyat />
                     <SectionCouple />
+                    <SectionItsTheDay />
                     <SectionSaveTheDate name={name} />
                     <SectionMessage name={name} />
-                    <SectionItsTheDay />
                     <SectionDigitalEnvelop />
                     <SectionGallery />
                     <SectionFin />

@@ -43,8 +43,8 @@ export default function SectionSaveTheDate({ name }) {
 
     return (
         <section className="p-8 flex relative items-center overflow-hidden bg-white">
-            <img src="/orn-flower-1.png" alt="" className="absolute top-0 w-40 -left-8" />
-            <img src="/orn-flower-3.png" alt="" className="absolute w-32 top-4 -right-8" />
+            {/* <img src="/orn-flower-1.png" alt="" className="absolute top-0 w-40 -left-8" />
+            <img src="/orn-flower-3.png" alt="" className="absolute w-32 top-4 -right-8" /> */}
             <div
                 className="rounded-2xl shadow-xl relative bg-[#ece5db] text-center w-full overflow-hidden mt-10"
                 data-aos="fade-up"

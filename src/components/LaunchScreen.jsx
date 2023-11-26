@@ -9,40 +9,6 @@ export default function LaunchScreen({ name, onOpenInvitation }) {
                 id="launch-screen"
                 className="relative h-[100svh] fillable-height flex flex-col items-center justify-center overflow-hidden md:hidden"
             >
-                <div className="absolute inset-0">
-                    <div className="absolute z-10 -bottom-16 -left-24">
-                        <img src="/orn-flower-1.png" alt="" className="pointer-events-none w-72" onContextMenu={handleContextMenu} />
-                    </div>
-                    <div className="absolute bottom-0 z-20 -left-4 animate-right-left">
-                        <img
-                            src="/orn-flower-4.png"
-                            alt=""
-                            className="pointer-events-none w-28"
-                            data-aos="fade-up-right"
-                            data-aos-duration="2000"
-                            data-aos-offset="0"
-                            data-aos-delay="800"
-                            onContextMenu={handleContextMenu}
-                        />
-                    </div>
-
-                    <div className="absolute z-20 -bottom-16 -right-0">
-                        <img src="/orn-flower-3.png" alt="" className="pointer-events-none w-36" onContextMenu={handleContextMenu} />
-                    </div>
-                    <div className="absolute bottom-0 z-10 -right-4 animate-left-right">
-                        <img
-                            src="/orn-flower-2.png"
-                            alt=""
-                            className="w-28 scale-x-[-1] pointer-events-none"
-                            data-aos="fade-up-left"
-                            data-aos-duration="2000"
-                            data-aos-offset="0"
-                            data-aos-delay="800"
-                            onContextMenu={handleContextMenu}
-                        />
-                    </div>
-                </div>
-
                 <div className="flex flex-col min-h-screen min-w-screen justify-between left-0 right-0 z-30 text-center bottom-20">
                     <div className="mb-8 mt-14">
                         <h1
@@ -50,7 +16,7 @@ export default function LaunchScreen({ name, onOpenInvitation }) {
                             data-aos="fade-up"
                             data-aos-duration="2000"
                         >
-                            Wedding of
+                            The Wedding of
                         </h1>
                         <h1
                             className="text-white font-bold leading-normal text-[13vw] font-writing shadowed-text"
@@ -70,7 +36,10 @@ export default function LaunchScreen({ name, onOpenInvitation }) {
 
                     <div className="mb-20">
                         <p className="text-xl mb-8" data-aos="fade-up" data-aos-delay="400" data-aos-duration="2000" data-aos-offset="0">
-                            Halo, {name}
+                            Kepada Yth.
+                        </p>
+                        <p className="text-3xl mb-8" data-aos="fade-up" data-aos-delay="400" data-aos-duration="2000" data-aos-offset="0">
+                            {name}
                         </p>
                         <button
                             type="button"

@@ -30,7 +30,7 @@ export default function SectionGallery() {
                             </div>
 
                             <div className="w-full h-40">
-                                <Item original="/gallery-03.jpg" thumbnail="/gallery-03.jpg" width="1061" height="1591">
+                                <Item original="/gallery-03.jpg" thumbnail="/gallery-03.jpg" width="1061" height="691">
                                     {({ ref, open }) => (
                                         <img ref={ref} onClick={open} src="/gallery-03.jpg" alt="" className="object-cover w-full h-full" />
                                     )}
@@ -47,7 +47,7 @@ export default function SectionGallery() {
                                 </Item>
                             </div>
                             <div className="aspect-[3/4] h-40">
-                                <Item original="/gallery-05.jpg" thumbnail="/gallery-05.jpg" width="1036" height="691">
+                                <Item original="/gallery-05.jpg" thumbnail="/gallery-05.jpg" width="1036" height="1591">
                                     {({ ref, open }) => (
                                         <img ref={ref} onClick={open} src="/gallery-05.jpg" alt="" className="object-cover w-full h-full" />
                                     )}
@@ -87,19 +87,6 @@ export default function SectionGallery() {
                     </div>
                 </ImageGallery>
             </div>
-
-            <div className="absolute -left-16 top-10" data-aos="zoom-in-right" data-aos-duration="1000" data-aos-delay="500" data-aos-once="true">
-                <img src="/orn-flower-15.png" alt="" className="w-32" />
-            </div>
-
-            <div className="absolute -right-16 top-10" data-aos="zoom-in-left" data-aos-duration="1000" data-aos-delay="500" data-aos-once="true">
-                <img src="/orn-flower-15.png" alt="" className="w-32" />
-            </div>
-
-            <div className="absolute -right-24 top-[30%]" data-aos="zoom-in-left" data-aos-duration="1000" data-aos-delay="250" data-aos-once="true">
-                <img src="/orn-flower-10.png" alt="" className="w-32" />
-            </div>
-
             <div
                 className="absolute -left-24 top-[60%] -scale-x-100"
                 data-aos="zoom-in-right"
@@ -107,10 +94,6 @@ export default function SectionGallery() {
                 data-aos-delay="250"
                 data-aos-once="true"
             >
-                <img src="/orn-flower-10.png" alt="" className="w-32" />
-            </div>
-
-            <div className="absolute -right-24 top-[90%]" data-aos="zoom-in-left" data-aos-duration="1000" data-aos-delay="250" data-aos-once="true">
                 <img src="/orn-flower-10.png" alt="" className="w-32" />
             </div>
         </section>

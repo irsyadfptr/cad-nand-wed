@@ -36,28 +36,28 @@ export default function SectionCouple() {
                 </p>
             </div>
 
-            <div className="relative flex flex-col items-center">
+            <div className="relative flex flex-col items-center bg-[#4a6741]">
                 <div
                     data-aos="zoom-in-down"
                     data-aos-duration="2000"
                     data-aos-delay="1000"
                     data-aos-once="true"
                     data-aos-offset="0"
-                    className="relative flex flex-col items-center bg-[#4a6741] text-[#ece5db]"
+                    className="relative flex flex-col items-center text-[#ece5db] w-full"
                 >
-                    <div className="relative overflow-hidden">
+                    <div className="mt-10 relative h-[375px] w-[250px] rounded-xl overflow-hidden">
                         <div
                             style={{
-                                height: '100vw',
-                                width: '100vw',
                                 animation: 'nanda-image 8s infinite alternate',
                                 backgroundPosition: 'center',
                                 backgroundSize: 'cover',
+                                width: '100%',
+                                height: '100%',
                             }}
+                            className="object-cover rounded-tl-full rounded-tr-full border-4 shadow-xl pointer-events-none"
                         />
                     </div>
-
-                    <div className="my-14">
+                    <div className="my-8">
                         <h2 className="text-[10vw] font-writing font-bold leading-[3rem]">
                             Ananda Prabu <br /> Dian Astuti
                         </h2>
@@ -67,7 +67,11 @@ export default function SectionCouple() {
                     </div>
                 </div>
 
-                <div
+                <div className="w-full bg-[#4a6741] flex justify-center my-4">
+                    <div className="vertical" />
+                </div>
+
+                {/* <div
                     className="w-screen py-20 text-5xl font-writing border-y-2 "
                     // data-aos="zoom-in"
                     // data-aos-duration="2000"
@@ -75,7 +79,7 @@ export default function SectionCouple() {
                     // data-aos-once="true"
                 >
                     With
-                </div>
+                </div> */}
 
                 <div
                     data-aos="zoom-in-down"
@@ -83,9 +87,9 @@ export default function SectionCouple() {
                     data-aos-delay="1000"
                     data-aos-once="true"
                     data-aos-offset="0"
-                    className="relative flex flex-col items-center bg-[#4a6741] text-[#ece5db]"
+                    className="relative flex flex-col items-center bg-[#4a6741] text-[#ece5db] w-full mb-10"
                 >
-                    <div className="my-14">
+                    <div className="mt-10">
                         <h2 className="text-[10vw] font-writing font-bold leading-[3rem]">
                             Irsyad Fakhri <br /> Putranto
                         </h2>
@@ -94,15 +98,16 @@ export default function SectionCouple() {
                         </p>
                     </div>
 
-                    <div className="relative overflow-hidden">
+                    <div className="mt-10 relative h-[375px] w-[250px] rounded-xl overflow-hidden">
                         <div
                             style={{
-                                height: '100vw',
-                                width: '100vw',
                                 animation: 'irsyad-image 8s infinite alternate',
                                 backgroundPosition: 'center',
                                 backgroundSize: 'cover',
+                                width: '100%',
+                                height: '100%',
                             }}
+                            className="object-cover rounded-tl-full rounded-tr-full border-4 shadow-xl pointer-events-none"
                         />
                     </div>
                 </div>
