@@ -79,7 +79,7 @@ function App() {
     return (
         <>
             {showLaunchScreen && (
-                <div className={`transition-all duration-[2000ms] ${openedInvitaion ? '-mt-[100svh]' : ''}`}>
+                <div className={`transition-all duration-[2000ms] ${openedInvitaion ? '-mt-[100vh]' : ''}`}>
                     <LaunchScreen name={name} onOpenInvitation={handleClickOpenInvitation} />
                 </div>
             )}

@@ -22,7 +22,7 @@ export default function SectionIntro({}) {
     });
 
     return (
-        <section className="h-screen flex flex-col items-center overflow-hidden">
+        <section className="h-[100vh] flex flex-col items-center overflow-hidden">
             <div
                 className="w-full h-full bg-cover bg-center relative"
                 style={{
@@ -44,7 +44,10 @@ export default function SectionIntro({}) {
                 </h1>
             </div>
 
-            <div id="container" className="absolute bottom-[-5vh] w-[85vw]">
+            <div id="container" className="absolute top-[95vh] w-[85vw]"
+                            data-aos="zoom-in"
+                            data-aos-duration="1000"
+                            data-aos-once="true">
                 <div ref={sliderRef} className="keen-slider">
                     {Array.from({ length: 19 }, (_, index) => (
                         <div
