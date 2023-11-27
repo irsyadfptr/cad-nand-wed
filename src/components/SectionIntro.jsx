@@ -1,10 +1,33 @@
-export default function SectionIntro({ name }) {
+import { useKeenSlider } from 'keen-slider/react';
+import 'keen-slider/keen-slider.min.css';
+import { useEffect, useRef } from 'react';
+
+export default function SectionIntro({}) {
+    const timer = useRef();
+    const [sliderRef, slider] = useKeenSlider({
+        loop: true,
+        duration: 2000,
+        slidesPerView: 3,
+        controls: false,
+        spacing: 10,
+    });
+
+    useEffect(() => {
+        timer.current = setInterval(() => {
+            slider.next();
+        }, 3000);
+        return () => {
+            clearInterval(timer.current);
+        };
+    });
+
     return (
         <section className="h-screen flex flex-col items-center overflow-hidden">
             <div
                 className="w-full h-full bg-cover bg-center relative"
                 style={{
-                    backgroundImage: "linear-gradient(180deg, rgba(236, 229, 219, 0) 0%, #4a6741  125%), linear-gradient(180deg, #4a6741 0%, rgba(236, 229, 219, 0)  80%), url('/intro-2.jpg')",
+                    backgroundImage:
+                        "linear-gradient(180deg, rgba(236, 229, 219, 0) 0%, #4a6741  180%), linear-gradient(180deg, #4a6741 0%, rgba(236, 229, 219, 0)  80%), url('/intro-2.jpg')",
                 }}
                 data-aos="zoom-in"
                 data-aos-duration="1000"
@@ -21,9 +44,17 @@ export default function SectionIntro({ name }) {
                 </h1>
             </div>
 
-            <div id="container" className="absolute">
-      
-    </div>
+            <div id="container" className="absolute bottom-[-5vh] w-[85vw]">
+                <div ref={sliderRef} className="keen-slider">
+                    {Array.from({ length: 19 }, (_, index) => (
+                        <div
+                            key={index + 1}
+                            className={`keen-slider__slide number-slide${index + 1} rounded-lg bg-cover bg-no-repeat bg-center`}
+                            style={{ backgroundImage: `url('/carousel/${index + 1}.jpg')` }}
+                        />
+                    ))}
+                </div>
+            </div>
         </section>
     );
 }

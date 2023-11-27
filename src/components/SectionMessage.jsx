@@ -8,7 +8,7 @@ export default function SectionMessage({ name }) {
     const [messages, setMessages] = useState([]);
 
     const [state, setState] = useState({
-        name: name,
+        name: name ?? '',
         message: '',
         attendance: 'hadir',
     });
@@ -69,7 +69,7 @@ export default function SectionMessage({ name }) {
                                 type="text"
                                 id="nama"
                                 name="name"
-                                className="bg-[#ece5db] border border-[#4a6741] text-sm rounded-lg block w-full p-2.5 focus-visible:outline-[#4a6741] outline-1"
+                                className="bg-[#ece5db] border border-[#4a6741] text-sm rounded-lg block w-full p-2.5 focus-visible:outline-[#4a6741] outline-1 text-[#52331a]"
                                 placeholder="Masukkan Nama"
                                 required
                                 value={state.name}
@@ -85,7 +85,7 @@ export default function SectionMessage({ name }) {
                                 id="ucapan"
                                 name="message"
                                 rows={4}
-                                className="block p-2.5 w-full text-sm bg-[#ece5db] rounded-lg border border-[#4a6741] focus-visible:outline-[#4a6741] outline-1"
+                                className="block p-2.5 w-full text-sm bg-[#ece5db] rounded-lg border border-[#4a6741] focus-visible:outline-[#4a6741] outline-1 text-[#52331a]"
                                 placeholder="Berikan ucapan dan doa restu"
                                 required
                                 value={state.message}
@@ -117,10 +117,11 @@ export default function SectionMessage({ name }) {
                                 <select
                                     id="kehadiran"
                                     name="attendance"
-                                    className="relative bg-[#ece5db] border  border-[#4a6741] text-sm rounded-lg block w-full p-2.5 focus-visible:outline-[#4a6741] outline-1 appearance-none"
+                                    className="relative bg-[#ece5db] border  border-[#4a6741] text-sm rounded-lg block w-full p-2.5 focus-visible:outline-[#4a6741] outline-1 appearance-none text-[#52331a]"
                                     required
                                     value={state.attendance}
                                     onChange={handleChange}
+                                    placeholder="Pilih Kehadiran"
                                 >
                                     <option value="hadir">Hadir</option>
                                     <option value="tidak_hadir">Tidak Hadir</option>

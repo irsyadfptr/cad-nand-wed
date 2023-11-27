@@ -3,43 +3,28 @@ import TopOrnament from './TopOrnament';
 
 export default function SectionFin() {
     return (
-        <section className="relative py-32 bg-[#4a6741] overflow-hidden">
-            <div className="text-center text-[#ece5db] space-y-4">
-                <p className="text-xl opacity-70" data-aos="zoom-in-up" data-aos-duration="1000" data-aos-once="true" data-aos-offset="0">
-                    Wedding Invitation
+        <section className="w-full h-[75vh] bg-cover bg-center relative py-6 overflow-hidden"
+        style={{
+            backgroundImage:
+                "linear-gradient(180deg, rgba(236, 229, 219, 0) 0%, #ece5db  200%), linear-gradient(180deg, #ece5db 0%, rgba(236, 229, 219, 0)  20%), url('/fin-image.jpg')",
+        }}>
+            <div className="flex flex-col justify-end text-center h-full w-full"
+                                data-aos="zoom-in-up"
+                                data-aos-duration="1000"
+                                data-aos-once="true"
+                                data-aos-delay="250"
+                                data-aos-offset="0">
+                <p className="text-lg opacity-70">
+                    With Love
                 </p>
                 <h1
                     className="relative leading-10"
-                    data-aos="zoom-in-up"
-                    data-aos-duration="1000"
-                    data-aos-once="true"
-                    data-aos-delay="250"
-                    data-aos-offset="0"
                 >
-                    <span className="block text-[#d9b788] text-5xl font-bold font-writing">Ananda &amp; Irsyad</span>
+                    <span className="block text-white text-4xl font-bold font-writing shadowed-text py-1">Ananda &amp; Irsyad</span>
                 </h1>
-                <p
-                    className="text-lg opacity-70"
-                    data-aos="zoom-in-up"
-                    data-aos-duration="1000"
-                    data-aos-once="true"
-                    data-aos-delay="500"
-                    data-aos-offset="0"
-                >
-                    25 December 2023
-                </p>
-
-                <p data-aos="zoom-in-up" data-aos-duration="1000" data-aos-once="true" data-aos-delay="750">
+                <p>
                     #meNandakanIrsyad
                 </p>
-            </div>
-
-            <div className="absolute top-0 left-0 right-0 rotate-180 -scale-x-100">
-                <BottomOrnament />
-            </div>
-
-            <div className="absolute bottom-0 left-0 right-0 rotate-180 -scale-x-100">
-                <TopOrnament />
             </div>
         </section>
     );

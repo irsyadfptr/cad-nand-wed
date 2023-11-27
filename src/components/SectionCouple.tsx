@@ -28,7 +28,7 @@ export default function SectionCouple() {
                 <img src="/orn-flower-1.png" alt="" className="w-28 -scale-x-100" />
             </div>
 
-            <div className="my-16" data-aos="zoom-in-up" data-aos-duration="2000" data-aos-delay="700" data-aos-once="true" data-aos-offset="0">
+            <div className="my-16 px-8" data-aos="zoom-in-up" data-aos-duration="2000" data-aos-delay="700" data-aos-once="true" data-aos-offset="0">
                 <h2 className="text-[9vw] font-bold tracking-normal font-writing">The Wedding</h2>
                 <p className="mt-6 text-sm opacity-50">
                     We have come to our new life, we want to share the joy of our marriage with all the families and friends. We write this invitation

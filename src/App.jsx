@@ -20,7 +20,7 @@ import SectionMessage from './components/SectionMessage';
 
 function App() {
     const [isPlaying, setIsPlaying] = useState(false);
-    const [openedInvitaion, setOpenedInvitation] = useState(false);
+    const [openedInvitaion, setOpenedInvitation] = useState(true);
     const [showLaunchScreen, setShowLaunchScreen] = useState(true);
 
     useEffect(() => {

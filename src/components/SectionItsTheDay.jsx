@@ -20,29 +20,13 @@ export default function SectionItsTheDay() {
                     <div data-aos-once="true" data-aos="fade-down" data-aos-duration="1000">
                         <img src="/ring.png" width={80} className="block mx-auto mb-4" />
                         <div className="">
-                            <h3 className="text-4xl">Akad Nikah</h3>
+                            <h3 className="text-4xl">
+                                Akad Nikah <br /> & <br /> Temu Manten
+                            </h3>
                             <h3 className="text-2xl mt-2">(Family Only)</h3>
                             <div className="px-2 mt-4">
                                 <p>
-                                    25 December 2023 &#183; <br /> 10.00 &ndash; Selesai
-                                </p>
-                                <p>
-                                    Griya Joglo, Blitar
-                                    <br />
-                                    Jl. Bengawan Solo No.179 kel, Tanjungsari, Sukorejo, Blitar City, East Java 66122
-                                </p>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div data-aos-once="true" data-aos="fade-down" data-aos-duration="1000">
-                        <img src="/ring.png" width={80} className="block mx-auto mb-4" />
-                        <div className="">
-                            <h3 className="text-4xl">Temu</h3>
-                            <h3 className="text-2xl mt-2">(Family Only)</h3>
-                            <div className="px-2 mt-4">
-                                <p>
-                                    25 December 2023 &#183; <br /> 10.00 &ndash; Selesai
+                                    25 December 2023 &#183; <br /> 10.00 &ndash; 13.30
                                 </p>
                                 <p>
                                     Griya Joglo, Blitar
@@ -59,7 +43,7 @@ export default function SectionItsTheDay() {
                             <h3 className="text-4xl">Resepsi</h3>
                             <div className="px-2 mt-4">
                                 <p>
-                                    25 December 2023 &#183; <br /> 14.30 &ndash; Selesai
+                                    25 December 2023 &#183; <br /> 14.30 &ndash; 17.00
                                 </p>
                                 <p>
                                     Griya Joglo, Blitar
