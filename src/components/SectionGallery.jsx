@@ -3,16 +3,7 @@ import { Gallery as ImageGallery, Item } from 'react-photoswipe-gallery';
 
 export default function SectionGallery() {
     return (
-        <section className="relative px-8 py-16 overflow-hidden">
-            <h2
-                data-aos="zoom-in-down"
-                data-aos-duration="1000"
-                data-aos-once="true"
-                className="text-[12vw] mb-12 text-center font-bold tracking-normal font-writing"
-            >
-                Our Potrait
-            </h2>
-
+        <section className="relative px-8 overflow-hidden">
             <div className="relative z-10" data-aos="zoom-in" data-aos-duration="1000" data-aos-once="true">
                 <ImageGallery>
                     <div className="flex flex-wrap gap-4 overflow-hidden">

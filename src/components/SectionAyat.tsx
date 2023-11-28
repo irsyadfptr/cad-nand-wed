@@ -3,7 +3,7 @@ import React from 'react';
 export default function SectionAyat() {
     return (
         // <section className="px-8 py-24 bg-[#ece5db]">
-        <section className="px-8 py-24 bg-[#4a6741] text-[#ece5db]">
+        <section className="px-8 py-16">
             <div className="space-y-6 text-center" data-aos="zoom-in" data-aos-duration="1000" data-aos-delay="500" data-aos-once="true">
                 <h2 className="text-2xl font-semibold">بسم الله الرحمن الرحيم</h2>
                 <p className="text-sm leading-5 tracking-normal opacity-50">

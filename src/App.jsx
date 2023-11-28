@@ -20,7 +20,7 @@ import SectionMessage from './components/SectionMessage';
 
 function App() {
     const [isPlaying, setIsPlaying] = useState(false);
-    const [openedInvitaion, setOpenedInvitation] = useState(false);
+    const [openedInvitaion, setOpenedInvitation] = useState(true);
     const [showLaunchScreen, setShowLaunchScreen] = useState(true);
 
     useEffect(() => {
@@ -95,12 +95,12 @@ function App() {
                         {isPlaying ? <MusicIcon /> : <PauseIcon />}
                     </div>
                     <SectionIntro name={name} />
-                    <SectionAyat />
                     <SectionCouple />
                     <SectionItsTheDay />
                     <SectionSaveTheDate name={name} />
                     <SectionMessage name={name} />
                     <SectionDigitalEnvelop />
+                    <SectionAyat />
                     <SectionGallery />
                     <SectionFin />
                 </>

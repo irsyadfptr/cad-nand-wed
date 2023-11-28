@@ -27,14 +27,14 @@ export default function SectionIntro({}) {
                 className="w-full h-full bg-cover bg-center relative"
                 style={{
                     backgroundImage:
-                        "linear-gradient(180deg, rgba(236, 229, 219, 0) 0%, #4a6741  180%), linear-gradient(180deg, #4a6741 0%, rgba(236, 229, 219, 0)  80%), url('/intro-2.jpg')",
+                        "linear-gradient(180deg, rgba(236, 229, 219, 0) 0%, #ece5db 150%), linear-gradient(180deg, #ece5db 0%, rgba(236, 229, 219, 0) 80%), url('/gallery-05.jpg')",
                 }}
                 data-aos="zoom-in"
                 data-aos-duration="1000"
                 data-aos-once="true"
             >
-                <h1 className="mt-[12vh] leading-10 text-center -top-10" data-aos="zoom-in" data-aos-duration="1000" data-aos-once="true">
-                    <div className="text-[6vw] text-white shadowed-text">Wedding Invitation</div>
+                <h1 className="mt-[6vh] leading-10 text-center -top-10" data-aos="zoom-in" data-aos-duration="1000" data-aos-once="true">
+                    <div className="text-[6vw] shadowed-text">Wedding Invitation</div>
                     <div className="mt-8 block mt-1 text-white text-[16vw] font-bold font-writing leading-[15vw] shadowed-text">
                         Ananda <br /> &amp; <br /> Irsyad
                     </div>
@@ -44,7 +44,7 @@ export default function SectionIntro({}) {
                 </h1>
             </div>
 
-            <div id="container" className="absolute top-[95vh] w-[85vw]"
+            <div id="container" className="absolute top-[95vh] w-[85vw] z-50"
                             data-aos="zoom-in"
                             data-aos-duration="1000"
                             data-aos-once="true">

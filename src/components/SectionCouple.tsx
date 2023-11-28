@@ -8,7 +8,7 @@ export default function SectionCouple() {
     return (
         <section className="bg-[#ece5db] text-center relative overflow-hidden">
             <div
-                className="absolute z-20 -left-8 -top-0"
+                className="absolute z-20 -left-8 top-[17rem]"
                 data-aos="fade-down-left"
                 data-aos-duration="1000"
                 data-aos-delay="1400"
@@ -18,7 +18,7 @@ export default function SectionCouple() {
                 <img src="/orn-flower-1.png" alt="" className="w-28" />
             </div>
             <div
-                className="absolute z-20 -right-8 -top-0"
+                className="absolute z-20 -right-8 top-[17rem]"
                 data-aos="fade-down-right"
                 data-aos-duration="1000"
                 data-aos-delay="1400"
@@ -36,14 +36,14 @@ export default function SectionCouple() {
                 </p>
             </div>
 
-            <div className="relative flex flex-col items-center bg-[#4a6741]">
+            <div className="relative flex flex-col items-center bg-white">
                 <div
                     data-aos="zoom-in-down"
                     data-aos-duration="2000"
                     data-aos-delay="1000"
                     data-aos-once="true"
                     data-aos-offset="0"
-                    className="relative flex flex-col items-center text-[#ece5db] w-full"
+                    className="relative flex flex-col items-center w-full"
                 >
                     <div className="mt-10 relative h-[375px] w-[250px] rounded-xl overflow-hidden">
                         <div
@@ -67,7 +67,7 @@ export default function SectionCouple() {
                     </div>
                 </div>
 
-                <div className="w-full bg-[#4a6741] flex justify-center my-4">
+                <div className="w-full bg-white flex justify-center my-4">
                     <div className="vertical" />
                 </div>
 
@@ -87,7 +87,7 @@ export default function SectionCouple() {
                     data-aos-delay="1000"
                     data-aos-once="true"
                     data-aos-offset="0"
-                    className="relative flex flex-col items-center bg-[#4a6741] text-[#ece5db] w-full mb-10"
+                    className="relative flex flex-col items-center bg-white w-full mb-10"
                 >
                     <div className="mt-10">
                         <h2 className="text-[10vw] font-writing font-bold leading-[3rem]">

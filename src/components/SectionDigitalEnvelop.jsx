@@ -48,12 +48,12 @@ export default function SectionDigitalEnvelop() {
                             className="rounded-lg flex items-center justify-between border p-5 bg-[#ece5db] shadow-xl"
                         >
                             <div>
-                                <h3 className="mb-1.5 text-xl font-semibold">Irsyad Fakhri Putranto</h3>
+                                <h3 className="mb-1.5 text-xl font-semibold">Irsyad F. Putranto</h3>
                                 <p className="flex items-center gap-2 tracking-wider">
-                                    1091 9237 8282{' '}
+                                    0954 3011 81{' '}
                                     <button
                                         onClick={() => {
-                                            navigator.clipboard.writeText('0581474350');
+                                            navigator.clipboard.writeText('0954301181');
                                             setCopied('bca');
                                         }}
                                         className="text-xs"
@@ -73,21 +73,71 @@ export default function SectionDigitalEnvelop() {
                             className="rounded-lg flex items-center justify-between border p-5 bg-[#ece5db] shadow-xl"
                         >
                             <div>
-                                <h3 className="mb-1.5 text-xl font-semibold">Ananda Prabu Dian Astuti</h3>
+                                <h3 className="mb-1.5 text-xl font-semibold">Irsyad F. Putranto</h3>
                                 <p className="flex items-center gap-2 tracking-wider">
                                     1091 9237 8282{' '}
                                     <button
                                         onClick={() => {
-                                            navigator.clipboard.writeText('0581474350');
-                                            setCopied('bca');
+                                            navigator.clipboard.writeText('109192378282');
+                                            setCopied('jago');
                                         }}
                                         className="text-xs"
                                     >
-                                        {copied === 'bca' ? 'Copied!' : <CopyIcon size={16} />}
+                                        {copied === 'jago' ? 'Copied!' : <CopyIcon size={16} />}
                                     </button>
                                 </p>
                             </div>
-                            <img src="/bca.png" width={60} className="grayscale" />
+                            <img src="/jago.png" width={60} className="grayscale" />
+                        </div>
+
+                        <div
+                            data-aos="zoom-in-left"
+                            data-aos-duration="1000"
+                            data-aos-delay="100"
+                            data-aos-once="true"
+                            className="rounded-lg flex items-center justify-between border p-5 bg-[#ece5db] shadow-xl"
+                        >
+                            <div>
+                                <h3 className="mb-1.5 text-xl font-semibold">Ananda Prabu D. A.</h3>
+                                <p className="flex items-center gap-2 tracking-wider">
+                                    1174 9571 67{' '}
+                                    <button
+                                        onClick={() => {
+                                            navigator.clipboard.writeText('1174957167');
+                                            setCopied('bni');
+                                        }}
+                                        className="text-xs"
+                                    >
+                                        {copied === 'bni' ? 'Copied!' : <CopyIcon size={16} />}
+                                    </button>
+                                </p>
+                            </div>
+                            <img src="/bni.png" width={60} className="grayscale" />
+                        </div>
+
+                        <div
+                            data-aos="zoom-in-left"
+                            data-aos-duration="1000"
+                            data-aos-delay="100"
+                            data-aos-once="true"
+                            className="rounded-lg flex items-center justify-between border p-5 bg-[#ece5db] shadow-xl"
+                        >
+                            <div>
+                                <h3 className="mb-1.5 text-xl font-semibold">Ananda Prabu D. A.</h3>
+                                <p className="flex items-center gap-2 tracking-wider">
+                                    9000 0342 66727{' '}
+                                    <button
+                                        onClick={() => {
+                                            navigator.clipboard.writeText('9000034266727');
+                                            setCopied('mandiri');
+                                        }}
+                                        className="text-xs"
+                                    >
+                                        {copied === 'mandiri' ? 'Copied!' : <CopyIcon size={16} />}
+                                    </button>
+                                </p>
+                            </div>
+                            <img src="/mandiri.png" width={60} className="grayscale" />
                         </div>
                     </div>
                 )}
