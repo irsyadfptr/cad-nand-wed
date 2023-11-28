@@ -29,18 +29,22 @@ export default function SectionGallery() {
                             </div>
                         </div>
 
+                        <Item original="/gallery-04.jpg" thumbnail="/gallery-04.jpg" width="1061" height="691">
+                            {({ ref, open }) => <img ref={ref} onClick={open} src="/gallery-04.jpg" alt="" className="object-cover w-full h-full" />}
+                        </Item>
+
                         <div className="flex gap-4 overflow-hidden">
                             <div className="h-40">
-                                <Item original="/gallery-04.jpg" thumbnail="/gallery-04.jpg" width="1036" height="691">
+                                <Item original="/gallery-05.jpg" thumbnail="/gallery-05.jpg" width="1036" height="1591">
                                     {({ ref, open }) => (
-                                        <img ref={ref} onClick={open} src="/gallery-04.jpg" alt="" className="object-cover w-full h-full" />
+                                        <img ref={ref} onClick={open} src="/gallery-05-thumb.jpg" alt="" className="object-cover w-full h-full" />
                                     )}
                                 </Item>
                             </div>
                             <div className="aspect-[3/4] h-40">
-                                <Item original="/gallery-05.jpg" thumbnail="/gallery-05.jpg" width="1036" height="1591">
+                                <Item original="/gallery-06.jpg" thumbnail="/gallery-06.jpg" width="1036" height="1591">
                                     {({ ref, open }) => (
-                                        <img ref={ref} onClick={open} src="/gallery-05.jpg" alt="" className="object-cover w-full h-full" />
+                                        <img ref={ref} onClick={open} src="/gallery-06.jpg" alt="" className="object-cover w-full h-full" />
                                     )}
                                 </Item>
                             </div>
@@ -48,12 +52,12 @@ export default function SectionGallery() {
 
                         <div className="flex gap-4 overflow-hidden">
                             <div className="h-40">
-                                <Item original="/gallery-06.jpg" thumbnail="/gallery-06.jpg" width="1036" height="691">
+                                <Item original="/gallery-07.jpg" thumbnail="/gallery-07.jpg" width="1036" height="691">
                                     {({ ref, open }) => (
                                         <img
                                             ref={ref}
                                             onClick={open}
-                                            src="/gallery-06.jpg"
+                                            src="/gallery-07.jpg"
                                             alt=""
                                             className="object-cover object-left w-full h-full"
                                         />
@@ -62,12 +66,12 @@ export default function SectionGallery() {
                             </div>
 
                             <div className="h-40">
-                                <Item original="/gallery-07.jpg" thumbnail="/gallery-07.jpg" width="1036" height="691">
+                                <Item original="/gallery-08.jpg" thumbnail="/gallery-08.jpg" width="1036" height="691">
                                     {({ ref, open }) => (
                                         <img
                                             ref={ref}
                                             onClick={open}
-                                            src="/gallery-07.jpg"
+                                            src="/gallery-08.jpg"
                                             alt=""
                                             className="object-cover object-right w-full h-full"
                                         />

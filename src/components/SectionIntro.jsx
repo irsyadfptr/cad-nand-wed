@@ -27,7 +27,7 @@ export default function SectionIntro({}) {
                 className="w-full h-full bg-cover bg-center relative"
                 style={{
                     backgroundImage:
-                        "linear-gradient(180deg, rgba(236, 229, 219, 0) 0%, #ece5db 150%), linear-gradient(180deg, #ece5db 0%, rgba(236, 229, 219, 0) 80%), url('/gallery-05.jpg')",
+                        "linear-gradient(180deg, rgba(236, 229, 219, 0) 0%, #ece5db 100%), linear-gradient(180deg, #ece5db 0%, rgba(236, 229, 219, 0) 80%), url('/intro-2.jpg')",
                 }}
                 data-aos="zoom-in"
                 data-aos-duration="1000"
@@ -49,7 +49,7 @@ export default function SectionIntro({}) {
                             data-aos-duration="1000"
                             data-aos-once="true">
                 <div ref={sliderRef} className="keen-slider">
-                    {Array.from({ length: 19 }, (_, index) => (
+                    {Array.from({ length: 5 }, (_, index) => (
                         <div
                             key={index + 1}
                             className={`keen-slider__slide number-slide${index + 1} rounded-lg bg-cover bg-no-repeat bg-center`}

@@ -3,7 +3,7 @@ import TopOrnament from './TopOrnament';
 
 export default function SectionFin() {
     return (
-        <section className="w-full h-[75vh] bg-cover bg-center relative py-6 overflow-hidden"
+        <section className="w-full h-[70vh] bg-cover bg-center relative py-6 overflow-hidden"
         style={{
             backgroundImage:
                 "linear-gradient(180deg, rgba(236, 229, 219, 0) 0%, #ece5db  200%), linear-gradient(180deg, #ece5db 0%, rgba(236, 229, 219, 0)  20%), url('/fin-image.jpg')",
@@ -13,7 +13,8 @@ export default function SectionFin() {
                                 data-aos-duration="1000"
                                 data-aos-once="true"
                                 data-aos-delay="250"
-                                data-aos-offset="0">
+                                data-aos-offset="0"
+                                >
                 <p className="text-lg opacity-70">
                     With Love
                 </p>
