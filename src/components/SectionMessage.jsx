@@ -48,7 +48,7 @@ export default function SectionMessage({ name }) {
             <div className="z-20 flex flex-col w-full gap-4">
                 <div data-aos="zoom-in-up" data-aos-duration="1000" data-aos-once="true" className="flex flex-col text-center text-[#52331a]">
                     <h2 className="text-4xl">RSVP</h2>
-                    <p className="opacity-50">Your wish are very mean to us.</p>
+                    <p className="opacity-50">Your presence and wishes mean a lot to us.</p>
                 </div>
 
                 {hasSent ? (
@@ -63,14 +63,14 @@ export default function SectionMessage({ name }) {
                     >
                         <div>
                             <label htmlFor="nama" className="block mb-2 text-sm font-medium ">
-                                Nama
+                                Name
                             </label>
                             <input
                                 type="text"
                                 id="nama"
                                 name="name"
                                 className="bg-[#ece5db] border border-[#4a6741] text-sm rounded-lg block w-full p-2.5 focus-visible:outline-[#4a6741] outline-1 text-[#52331a]"
-                                placeholder="Masukkan Nama"
+                                placeholder="Type your name"
                                 required
                                 value={state.name}
                                 onChange={handleChange}
@@ -79,14 +79,14 @@ export default function SectionMessage({ name }) {
 
                         <div>
                             <label htmlFor="ucapan" className="block mb-2 text-sm font-medium">
-                                Ucapan
+                                Wedding Wishes
                             </label>
                             <textarea
                                 id="ucapan"
                                 name="message"
                                 rows={4}
                                 className="block p-2.5 w-full text-sm bg-[#ece5db] rounded-lg border border-[#4a6741] focus-visible:outline-[#4a6741] outline-1 text-[#52331a]"
-                                placeholder="Berikan ucapan dan doa restu"
+                                placeholder="Type your wedding wishes for us"
                                 required
                                 value={state.message}
                                 onChange={handleChange}
@@ -95,7 +95,7 @@ export default function SectionMessage({ name }) {
 
                         <div>
                             <label htmlFor="kehadiran" className="block mb-2 text-sm font-medium">
-                                Konfirmasi Kehadiran
+                                Confirmation
                             </label>
                             <div className="relative">
                                 <div className="absolute z-10 right-2 top-3.5">
@@ -121,7 +121,7 @@ export default function SectionMessage({ name }) {
                                     required
                                     value={state.attendance}
                                     onChange={handleChange}
-                                    placeholder="Pilih Kehadiran"
+                                    placeholder="Choose Confirmation"
                                 >
                                     <option value="hadir">Hadir</option>
                                     <option value="tidak_hadir">Tidak Hadir</option>

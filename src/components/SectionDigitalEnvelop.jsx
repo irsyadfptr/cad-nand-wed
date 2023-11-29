@@ -28,13 +28,12 @@ export default function SectionDigitalEnvelop() {
                         data-aos-once="true"
                         className="text-[10vw] text-center font-bold tracking-normal font-writing"
                     >
-                        Digital Envelope
+                        Wedding Gift
                     </h2>
 
                     <div data-aos="zoom-in-up" data-aos-duration="1000" data-aos-delay="100" data-aos-once="true">
                         <p className="opacity-50">
-                            Your Blessing is a meaningful gift to us. And if giving is an expression of your love, you can give a cashless gift.
-                        </p>
+                        Your blessing is a deeply meaningful gift for us. If the gesture of giving is an expression of your love, we wholeheartedly welcome and greatly appreciate the consideration of a cashless gift as a thoughtful manifestation of your affection.                        </p>
                     </div>
                 </div>
 

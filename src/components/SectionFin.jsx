@@ -21,7 +21,7 @@ export default function SectionFin() {
                 <h1
                     className="relative leading-10"
                 >
-                    <span className="block text-white text-4xl font-bold font-writing shadowed-text py-1">Ananda &amp; Irsyad</span>
+                    <span className="block text-white text-4xl font-semibold font-writing shadowed-text py-1">Ananda &amp; Irsyad</span>
                 </h1>
                 <p>
                     #meNandakanIrsyad

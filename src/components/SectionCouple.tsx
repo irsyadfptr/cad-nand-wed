@@ -31,8 +31,8 @@ export default function SectionCouple() {
             <div className="my-16 px-8" data-aos="zoom-in-up" data-aos-duration="2000" data-aos-delay="700" data-aos-once="true" data-aos-offset="0">
                 <h2 className="text-[9vw] font-bold tracking-normal font-writing">The Wedding</h2>
                 <p className="mt-6 text-sm opacity-50">
-                    We have come to our new life, we want to share the joy of our marriage with all the families and friends. We write this invitation
-                    to invite all of you to share the joy with us on our wedding.
+                In the dawn of our new journey, the moment has arrived to count down the days until our blissful day. 
+                We would like to extend an invitation for you to be part of this special moment, physically or through the warmth of your heartfelt prayers and wishes.
                 </p>
             </div>
 
@@ -62,7 +62,7 @@ export default function SectionCouple() {
                             Ananda Prabu <br /> Dian Astuti
                         </h2>
                         <p className="mt-6 px-6">
-                            Daughter of <br /> Mr. Miranu & Mrs. Farida
+                        <span className='text-sm'>Daughter of</span> <br /> Mr. Miranu Triantoro<br/>&<br/>Mrs. Farida Nursusanti
                         </p>
                     </div>
                 </div>
@@ -94,7 +94,7 @@ export default function SectionCouple() {
                             Irsyad Fakhri <br /> Putranto
                         </h2>
                         <p className="mt-6 px-6">
-                            Son of <br /> Mr. Fachrurrodji & Mrs. Sari
+                            <span className='text-sm'>Son of</span> <br /> Mr. Fachrurrodji<br/>&<br/>Mrs. Sari Muktiningrum
                         </p>
                     </div>
 

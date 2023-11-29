@@ -35,7 +35,7 @@ export default function SectionIntro({}) {
             >
                 <h1 className="mt-[6vh] leading-10 text-center -top-10" data-aos="zoom-in" data-aos-duration="1000" data-aos-once="true">
                     <div className="text-[6vw] shadowed-text">Wedding Invitation</div>
-                    <div className="mt-8 block mt-1 text-white text-[16vw] font-bold font-writing leading-[15vw] shadowed-text">
+                    <div className="mt-8 block mt-1 text-white text-[16vw] font-semibold font-writing leading-[15vw] shadowed-text">
                         Ananda <br /> &amp; <br /> Irsyad
                     </div>
                     <div className="mt-8 text-[5vw] font-writing shadowed-text mx-[16vw] leading-6 text-white shadowed-text">
