@@ -60,7 +60,7 @@ export default function LaunchScreen({ name, onOpenInvitation }) {
                 className="relative h-[100vh] fillable-height flex flex-col items-center justify-center overflow-hidden hidden md:block"
             >
                 <div className="background-desktop flex flex-col min-h-screen min-w-screen justify-between left-0 right-0 z-30 text-center bottom-20">
-                    <div className="overlay absolute inset-0 bg-gradient-to-b from-transparent to-[#fff1de]"></div>
+                    {/* <div className="overlay absolute inset-0 bg-gradient-to-b from-transparent to-[#fff1de]"></div> */}
 
                     <div className="mb-8 mt-20 z-20">
                         <h1

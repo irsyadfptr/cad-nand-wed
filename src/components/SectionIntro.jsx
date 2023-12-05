@@ -34,17 +34,17 @@ export default function SectionIntro({}) {
                 data-aos-once="true"
             >
                 <h1 className="mt-[6vh] leading-10 text-center -top-10" data-aos="zoom-in" data-aos-duration="1000" data-aos-once="true">
-                    <div className="text-[6vw] shadowed-text">Wedding Invitation</div>
-                    <div className="mt-8 block mt-1 text-white text-[16vw] font-semibold font-writing leading-[15vw] shadowed-text">
+                    <div className="text-[6vw] md:text-4xl lg:text-2xl xl:text-4xl shadowed-text">Wedding Invitation</div>
+                    <div className="mt-8 block mt-1 text-white text-[16vw] md:text-[7.5rem] lg:text-[7rem] font-semibold font-writing leading-[15vw] lg:leading-[7rem] shadowed-text">
                         Ananda <br /> &amp; <br /> Irsyad
                     </div>
-                    <div className="mt-8 text-[5vw] font-writing shadowed-text mx-[16vw] leading-6 text-white shadowed-text">
+                    <div className="mt-8 text-[5vw] md:text-4xl font-writing shadowed-text mx-[16vw] lg:text-[3rem] leading-6 text-white shadowed-text">
                         Life is better with your best friend that's why I married mine!
                     </div>
                 </h1>
             </div>
 
-            <div id="container" className="absolute top-[95vh] w-[85vw] z-50"
+            <div id="container" className="absolute top-[95vh] sm:top-[90vh] w-[85vw] z-50"
                             data-aos="zoom-in"
                             data-aos-duration="1000"
                             data-aos-once="true">

@@ -20,7 +20,7 @@ import SectionMessage from './components/SectionMessage';
 
 function App() {
     const [isPlaying, setIsPlaying] = useState(false);
-    const [openedInvitaion, setOpenedInvitation] = useState(false);
+    const [openedInvitaion, setOpenedInvitation] = useState(true);
     const [showLaunchScreen, setShowLaunchScreen] = useState(true);
 
     useEffect(() => {
@@ -70,7 +70,7 @@ function App() {
 
     const url = new URL(window.location.href);
     const name = url.searchParams.get('name');
-    const page = url.searchParams.get('page');
+    const page = url.searchParams.get('type');
 
     if (page === 'admin') {
         return <Admin />;

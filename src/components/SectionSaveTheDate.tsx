@@ -60,7 +60,7 @@ export default function SectionSaveTheDate({ name }) {
                     data-aos-duration="1000"
                     data-aos-once="true"
                 >
-                    <img src="/section-1.jpg" alt="" className="h-[300px] w-full object-cover" />
+                    <img src="/section-1.jpg" alt="" className="h-[300px] lg:h-[500px] w-full object-cover" />
                 </div>
 
                 <div className="flex flex-col gap-6 p-8" data-aos="fade-up" data-aos-duration="1000" data-aos-once="true">
@@ -96,14 +96,14 @@ export default function SectionSaveTheDate({ name }) {
                         <a
                             href={invitationLink}
                             target="__blank"
-                            className="self-center text-sm px-4 py-2 border-b hover:rounded-lg hover:bg-[#ece5db] hover:text-[#822223]"
+                            className="self-center text-sm lg:text-lg px-4 py-2 border-b hover:rounded-lg hover:bg-[#ece5db] hover:text-[#822223]"
                         >
                             Add to Calendar
                         </a>
                         <a
                             href={mapLink}
                             target="__blank"
-                            className="self-center text-sm px-4 py-2 border-b hover:rounded-lg hover:bg-[#ece5db] hover:text-[#822223]"
+                            className="self-center text-sm lg:text-lg px-4 py-2 border-b hover:rounded-lg hover:bg-[#ece5db] hover:text-[#822223]"
                         >
                             Open Maps
                         </a>

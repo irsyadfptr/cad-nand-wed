@@ -24,6 +24,18 @@
     background-repeat: no-repeat;
 }
 
+#launch-screen-desktop::after {
+    content: '';
+    position: absolute;
+    /* top: 0; */
+    left: 0;
+    bottom: 0;
+    right: 0;
+    width: 100%;
+    height: 100%;
+    background-image: linear-gradient(180deg, #fff1de 0%, rgba(236, 229, 219, 0) 100%), linear-gradient(180deg, rgba(236, 229, 219, 0) 0%, #fff1de 150%);
+}
+
 #section-itstheday {
     background-image: linear-gradient(rgb(236, 229, 219), rgba(255, 247, 235, 0.65)), url('/savethedate-bg.jpg');
     background-size: cover;
@@ -164,4 +176,16 @@
     color: #fff;
     font-weight: 500;
     height: 10vh;
+}
+
+@media (min-width: 576px) {
+    [class*='number-slide'] {
+        height: 20vh;
+    }
+}
+
+@media (min-width: 1200px) {
+    [class*='number-slide'] {
+        height: 30vh;
+    }
 }
