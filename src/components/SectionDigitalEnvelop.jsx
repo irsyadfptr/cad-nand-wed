@@ -33,7 +33,10 @@ export default function SectionDigitalEnvelop() {
 
                     <div data-aos="zoom-in-up" data-aos-duration="1000" data-aos-delay="100" data-aos-once="true">
                         <p className="opacity-50">
-                        Your blessing is a deeply meaningful gift for us. If the gesture of giving is an expression of your love, we wholeheartedly welcome and greatly appreciate the consideration of a cashless gift as a thoughtful manifestation of your affection.                        </p>
+                            Your blessing is a deeply meaningful gift for us. If the gesture of giving is an expression of your love, we
+                            wholeheartedly welcome and greatly appreciate the consideration of a cashless gift as a thoughtful manifestation of your
+                            affection.{' '}
+                        </p>
                     </div>
                 </div>
 

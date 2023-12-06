@@ -11,18 +11,10 @@ export default function LaunchScreen({ name, onOpenInvitation }) {
             >
                 <div className="flex flex-col min-h-screen min-w-screen justify-between left-0 right-0 z-30 text-center bottom-20">
                     <div className="mb-8 mt-14">
-                        <h1
-                            className="text-white font-bold leading-normal text-[5vw] shadowed-text"
-                            data-aos="fade-up"
-                            data-aos-duration="2000"
-                        >
+                        <h1 className="text-white font-bold leading-normal text-[5vw] shadowed-text" data-aos="fade-up" data-aos-duration="2000">
                             The Wedding of
                         </h1>
-                        <h1
-                            className="text-white leading-normal text-[13vw] font-writing shadowed-text"
-                            data-aos="fade-up"
-                            data-aos-duration="2000"
-                        >
+                        <h1 className="text-white leading-normal text-[13vw] font-writing shadowed-text" data-aos="fade-up" data-aos-duration="2000">
                             Ananda &amp; Irsyad
                         </h1>
                         <h1

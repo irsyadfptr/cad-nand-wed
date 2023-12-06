@@ -44,10 +44,13 @@ export default function SectionIntro({}) {
                 </h1>
             </div>
 
-            <div id="container" className="absolute top-[95vh] sm:top-[90vh] w-[85vw] z-50"
-                            data-aos="zoom-in"
-                            data-aos-duration="1000"
-                            data-aos-once="true">
+            <div
+                id="container"
+                className="absolute top-[95vh] sm:top-[90vh] w-[85vw] z-50"
+                data-aos="zoom-in"
+                data-aos-duration="1000"
+                data-aos-once="true"
+            >
                 <div ref={sliderRef} className="keen-slider">
                     {Array.from({ length: 5 }, (_, index) => (
                         <div

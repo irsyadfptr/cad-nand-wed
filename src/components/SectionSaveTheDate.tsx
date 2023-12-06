@@ -1,11 +1,14 @@
 import React, { useEffect, useState } from 'react';
 
-export default function SectionSaveTheDate({ name }) {
-    const targetDate = new Date('2023-12-25T14:30:00').getTime();
+export default function SectionSaveTheDate({ name, event }) {
+    const targetDate = event !== 'syukuran' ? new Date('2023-12-25T14:30:00').getTime() : new Date('2023-12-30T11:00:00').getTime();
     const [timeRemaining, setTimeRemaining] = useState(calculateTimeRemaining());
 
-    const invitationLink = `https://calendar.google.com/calendar/u/0/r/eventedit?text=Ananda+%26+Irsyad+Wedding&dates=20231225T143000/20231225T170000&location=Griya+Joglo,+Jl.+Bengawan+Solo+No.179+kel,+Tanjungsari,+Sukorejo,+Blitar+City,+East+Java+66122=Assalammu'alaikum,+We+invite+you,+${name}+for+attending+our+marriage.`;
-    const mapLink = 'https://maps.app.goo.gl/ZgfxQLfvKAaDDhQr8';
+    const invitationLink =
+        event !== 'syukuran'
+            ? `https://calendar.google.com/calendar/u/0/r/eventedit?text=Ananda+%26+Irsyad+Wedding&dates=20231225T143000/20231225T170000&location=Griya+Joglo,+Jl.+Bengawan+Solo+No.179+kel,+Tanjungsari,+Sukorejo,+Blitar+City,+East+Java+66122=Assalammu'alaikum,+We+invite+you,+${name}+for+attending+our+marriage.`
+            : `https://calendar.google.com/calendar/u/0/r/eventedit?text=Ananda+%26+Irsyad+Wedding&dates=20231225T143000/20231225T170000&location=Jl.+Palem+Raja+No.55,+RT.02%2FRW.02,+Bubulak,+Kec.+Bogor+Bar.,+Kota+Bogor,+Jawa+Barat+16113=Assalammu'alaikum,+We+invite+you,+${name}+for+attending+our+marriage.`;
+    const mapLink = event !== 'syukuran' ? 'https://maps.app.goo.gl/ZgfxQLfvKAaDDhQr8' : `https://maps.app.goo.gl/Hdc2R9PoEEb79SaN7`;
 
     function calculateTimeRemaining() {
         const currentTime = new Date().getTime();
@@ -64,11 +67,19 @@ export default function SectionSaveTheDate({ name }) {
                 </div>
 
                 <div className="flex flex-col gap-6 p-8" data-aos="fade-up" data-aos-duration="1000" data-aos-once="true">
-                    <div className="space-y-1">
-                        <h3 className="text-3xl tracking-normal">Save The Date</h3>
-                        <p className="tracking-wide opacity-60">25 December 2023</p>
-                        <p className="tracking-wide opacity-60">Griya Joglo</p>
-                    </div>
+                    {event !== 'syukuran' ? (
+                        <div className="space-y-1">
+                            <h3 className="text-3xl tracking-normal">Save The Date</h3>
+                            <p className="tracking-wide opacity-60">25 December 2023</p>
+                            <p className="tracking-wide opacity-60">Griya Joglo</p>
+                        </div>
+                    ) : (
+                        <div className="space-y-1">
+                            <h3 className="text-3xl tracking-normal">Save The Date</h3>
+                            <p className="tracking-wide opacity-60">30 December 2023</p>
+                            <p className="tracking-wide opacity-60">Jln. Palemraja No.30, Bubulak, Bogor</p>
+                        </div>
+                    )}
 
                     <div className="grid grid-cols-4">
                         <div className="flex flex-col gap-1">

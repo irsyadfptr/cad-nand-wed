@@ -70,11 +70,11 @@ function App() {
 
     const url = new URL(window.location.href);
     const name = url.searchParams.get('name');
-    const page = url.searchParams.get('type');
+    const event = url.searchParams.get('event');
 
-    if (page === 'admin') {
-        return <Admin />;
-    }
+    // if (page === 'admin') {
+    //     return <Admin />;
+    // }
 
     return (
         <>
@@ -96,8 +96,8 @@ function App() {
                     </div>
                     <SectionIntro name={name} />
                     <SectionCouple />
-                    <SectionItsTheDay />
-                    <SectionSaveTheDate name={name} />
+                    <SectionItsTheDay event={event} />
+                    <SectionSaveTheDate name={name} event={event} />
                     <SectionMessage name={name} />
                     <SectionDigitalEnvelop />
                     <SectionAyat />

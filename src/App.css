@@ -33,7 +33,8 @@
     right: 0;
     width: 100%;
     height: 100%;
-    background-image: linear-gradient(180deg, #fff1de 0%, rgba(236, 229, 219, 0) 100%), linear-gradient(180deg, rgba(236, 229, 219, 0) 0%, #fff1de 150%);
+    background-image: linear-gradient(180deg, #fff1de 0%, rgba(236, 229, 219, 0) 100%),
+        linear-gradient(180deg, rgba(236, 229, 219, 0) 0%, #fff1de 150%);
 }
 
 #section-itstheday {
