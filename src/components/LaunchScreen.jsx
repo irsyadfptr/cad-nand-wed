@@ -1,4 +1,4 @@
-export default function LaunchScreen({ name, onOpenInvitation }) {
+export default function LaunchScreen({ name, onOpenInvitation, event }) {
     const handleContextMenu = (e) => {
         e.preventDefault(); // Prevent the context menu from appearing
     };
@@ -22,7 +22,7 @@ export default function LaunchScreen({ name, onOpenInvitation }) {
                             data-aos="fade-up"
                             data-aos-duration="2000"
                         >
-                            25 December 2023
+                           {event !== "syukuran" ? "25 December 2023" : "30 December 2023"}
                         </h1>
                     </div>
 
