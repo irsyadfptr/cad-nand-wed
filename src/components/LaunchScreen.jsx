@@ -28,7 +28,7 @@ export default function LaunchScreen({ name, onOpenInvitation }) {
 
                     <div className="mb-20">
                         <p className="text-xl mb-8" data-aos="fade-up" data-aos-delay="400" data-aos-duration="2000" data-aos-offset="0">
-                            Dear
+                            Kepada Yth.
                         </p>
                         <p className="text-3xl mb-8" data-aos="fade-up" data-aos-delay="400" data-aos-duration="2000" data-aos-offset="0">
                             {name ?? 'Guest'}

@@ -1,5 +1,4 @@
 export default function SectionItsTheDay({ event }) {
-    console.log(event);
     return (
         <section className="px-12 py-16 bg-[#ece5db]">
             <h2
@@ -64,7 +63,7 @@ export default function SectionItsTheDay({ event }) {
                                 <h3 className="text-4xl xl:text-[2.5rem]">Syukuran</h3>
                                 <div className="px-2 mt-4 md:px-12 md:text-lg xl:text-2xl">
                                     <p>
-                                        30 December 2023 &#183; <br /> 11.00 &ndash; 14.00
+                                        30 December 2023 &#183; <br /> 10.00 &ndash; 13.00
                                     </p>
                                     <p>
                                         Rumah Lama

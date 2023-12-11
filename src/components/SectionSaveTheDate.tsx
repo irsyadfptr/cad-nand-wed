@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 
 export default function SectionSaveTheDate({ name, event }) {
-    const targetDate = event !== 'syukuran' ? new Date('2023-12-25T14:30:00').getTime() : new Date('2023-12-30T11:00:00').getTime();
+    const targetDate = event !== 'syukuran' ? new Date('2023-12-25T14:30:00').getTime() : new Date('2023-12-30T10:00:00').getTime();
     const [timeRemaining, setTimeRemaining] = useState(calculateTimeRemaining());
 
     const invitationLink =
