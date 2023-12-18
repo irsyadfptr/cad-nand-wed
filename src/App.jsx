@@ -71,6 +71,7 @@ function App() {
     const url = new URL(window.location.href);
     const name = url.searchParams.get('name');
     const event = url.searchParams.get('event');
+    const gift = url.searchParams.get('gift');
 
     // if (page === 'admin') {
     //     return <Admin />;
@@ -100,7 +101,7 @@ event={event} />
                     <SectionItsTheDay event={event} />
                     <SectionSaveTheDate name={name} event={event} />
                     <SectionMessage name={name} />
-                    <SectionDigitalEnvelop />
+                    {gift !== 'false' && <SectionDigitalEnvelop />}
                     <SectionAyat />
                     <SectionGallery />
                     <SectionFin />
