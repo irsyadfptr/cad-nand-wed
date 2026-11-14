@@ -1,5 +1,7 @@
 import { useEffect, useMemo, useRef, useState } from 'react';
-import { WEDDING_DATE, names, hero, chapters, quiz, TICKETS_PER_ANSWER, letter, film } from './content';
+import { WEDDING_DATE, names, hero, chapters, quiz, TICKETS_PER_ANSWER, counterSticker, letter, film } from './content';
+import { PeekingCat, SittingCat, SleepingCat, Rosette, Sparkle, PawTrail, MiniTicket } from './Ornaments';
+import useParallax from './useParallax';
 
 const DAY = 86400000;
 const pad = (n, len) => String(n).padStart(len, '0');
@@ -50,19 +52,30 @@ function Hero() {
 
     return (
         <header className="hero">
-            <div className="slot" aria-hidden="true" />
-            <article className="ticket hero-ticket">
-                <figure className="hero-photo">
-                    <img src={hero.photo} alt={`${names.her} and ${names.him} laughing by the window`} />
-                </figure>
+            <div className="scene">
+                <div className="scene-glow" data-speed="0.1" aria-hidden="true" />
+                <h1 className="scene-type" data-speed="0.32">
+                    <span>{names.her}</span>
+                    <span className="amp">&amp;</span>
+                    <span>{names.him}</span>
+                </h1>
 
+                <Sparkle className="s1" data-speed="-0.5" />
+                <Sparkle className="s2" data-speed="-0.25" />
+                <Sparkle className="s3" data-speed="-0.6" />
+                <Sparkle className="s4" data-speed="0.2" />
+                <div className="float f1" data-speed="-0.45"><MiniTicket /></div>
+                <div className="float f2" data-speed="-0.7"><MiniTicket label="No. 3" /></div>
+                <div className="float f3" data-speed="-0.3"><Rosette /></div>
+
+                <img className="scene-couple" src={hero.cutout} alt={`${names.her} and ${names.him} laughing together`} data-speed="0.06" />
+            </div>
+
+            <article className="ticket hero-ticket">
+                <PeekingCat className="peek-hero" />
+                <PeekingCat tone="red" className="peek-hero-2" />
                 <div className="hero-body">
                     <p className="ticket-kind">Admit two</p>
-                    <h1>
-                        {names.her}
-                        <span className="amp">&amp;</span>
-                        {names.him}
-                    </h1>
                     <p className="hero-line">{hero.line}</p>
                     <div className="serial">
                         <span className="serial-label">Day</span>
@@ -100,20 +113,36 @@ function Hero() {
 }
 
 function Chapter({ chapter, index }) {
-    const many = chapter.photos.length > 1;
+    const n = chapter.photos.length;
+    const soloCutout = chapter.cutout && n === 0;
     return (
-        <li className={`chapter ${index % 2 ? 'flip' : ''}`}>
+        <li className={`chapter ${index % 2 ? 'flip' : ''} ${chapter.cutout && !soloCutout ? 'has-pop' : ''}`}>
             <div className="chapter-text">
                 <p className="chapter-no">No. {pad(index + 1, 2)}</p>
                 <p className="chapter-date">{chapter.date}</p>
                 <h3>{chapter.title}</h3>
                 <p>{chapter.text}</p>
             </div>
-            <div className={`chapter-photos ${many ? `grid-${chapter.photos.length}` : ''}`}>
-                {chapter.photos.map((p) => (
-                    <img key={p.src} src={p.src} alt={p.alt} loading="lazy" />
-                ))}
-            </div>
+            {soloCutout ? (
+                <div className="chapter-cutout">
+                    <div className="cutout-halo" data-speed="0.12" aria-hidden="true" />
+                    <img src={chapter.cutout.src} alt={chapter.cutout.alt} loading="lazy" />
+                    <SittingCat className="cat-now" />
+                    <SittingCat tone="red" flip className="cat-now-2" />
+                </div>
+            ) : (
+                <div className={`chapter-photos ${n > 1 ? `grid-${n}` : ''}`}>
+                    {chapter.photos.map((p) => (
+                        <div className="photo-frame" key={p.src}>
+                            <img src={p.src} alt={p.alt} loading="lazy" data-speed="0.07" />
+                        </div>
+                    ))}
+                </div>
+            )}
+            {chapter.cutout && !soloCutout && (
+                <img className="chapter-pop sticker" src={chapter.cutout.src} alt={chapter.cutout.alt} loading="lazy" data-speed="-0.18" />
+            )}
+            {index === 4 && <Sparkle className="chapter-spark" data-speed="-0.4" />}
         </li>
     );
 }
@@ -170,6 +199,8 @@ function TicketCounter({ onRedeem, redeemed }) {
             </p>
 
             <div className="machine">
+                <PeekingCat className="peek-machine" />
+                <img className="machine-sticker sticker" src={counterSticker.src} alt={counterSticker.alt} loading="lazy" data-speed="-0.15" />
                 <div className="machine-display" aria-live="polite">
                     <span className="display-num">{pad(shown, 3)}</span>
                     <span className="display-goal">/ {goal} tickets</span>
@@ -238,6 +269,7 @@ function Letter({ open }) {
                     ))}
                     <p className="letter-closing">{letter.closing}</p>
                     <p className="letter-signature">{letter.signature}</p>
+                    <SleepingCat className="cat-letter" />
                 </article>
             )}
         </section>
@@ -295,16 +327,24 @@ function MusicToggle() {
 
 export default function App() {
     const [redeemed, setRedeemed] = useState(false);
+    useParallax();
     return (
         <>
             <Hero />
             <main>
                 <Story />
+                <PawTrail />
                 <TicketCounter onRedeem={() => setRedeemed(true)} redeemed={redeemed} />
                 <Letter open={redeemed} />
+                <PawTrail className="trail-right" />
                 <Film />
             </main>
             <footer className="footer">
+                <div className="footer-cats" aria-hidden="true">
+                    <SittingCat />
+                    <svg className="orn footer-heart" viewBox="0 0 24 22"><path d="M12 21 C 4 14 0 10 0 6 A6 6 0 0 1 12 4 A6 6 0 0 1 24 6 C24 10 20 14 12 21Z" /></svg>
+                    <SittingCat tone="red" flip />
+                </div>
                 <p>
                     Valid for a lifetime. Not transferable.
                     <br />

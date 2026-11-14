@@ -6,7 +6,7 @@ export const WEDDING_DATE = '2023-12-25T14:30:00+07:00';
 export const names = { her: 'Ananda', him: 'Irsyad', herShort: 'Nanda' };
 
 export const hero = {
-    photo: 'photos/laugh.jpg',
+    cutout: 'cutouts/laugh.webp',
     line: 'Three years ago you said yes in front of everyone we love. I still laugh like this every day.',
 };
 
@@ -25,9 +25,9 @@ export const chapters = [
         photos: [
             { src: 'photos/akad.jpg', alt: 'The akad nikah under the carved wooden backdrop' },
             { src: 'photos/hug.jpg', alt: 'A long hug after the akad' },
-            { src: 'photos/entrance.jpg', alt: 'Walking in together, smiling' },
             { src: 'photos/celebration.jpg', alt: 'Throwing the bouquet while everyone cheers' },
         ],
+        cutout: { src: 'cutouts/entrance.webp', alt: 'Walking in together, smiling' },
     },
     {
         date: '20 July 2024',
@@ -67,7 +67,8 @@ export const chapters = [
         date: 'Now',
         title: 'Still looking at you like this',
         text: 'Three years in. Same window light, same silly grin.',
-        photos: [{ src: 'photos/curtain.jpg', alt: 'Us facing each other in front of a sheer curtain' }],
+        photos: [],
+        cutout: { src: 'cutouts/curtain.webp', alt: 'Us facing each other in front of a sheer curtain' },
     },
 ];
 
@@ -101,6 +102,7 @@ export const quiz = [
 ];
 
 export const TICKETS_PER_ANSWER = 30;
+export const counterSticker = { src: 'cutouts/arcade.webp', alt: 'Nanda laughing with her 150-ticket roll' };
 
 // TODO: rewrite this in your own words — this is a placeholder draft.
 export const letter = {
@@ -117,5 +119,5 @@ export const letter = {
 // Drop your film at public/video/anniversary.mp4 and it will appear automatically.
 export const film = {
     src: 'video/anniversary.mp4',
-    poster: 'photos/curtain.jpg',
+    poster: 'photos/celebration.jpg',
 };
