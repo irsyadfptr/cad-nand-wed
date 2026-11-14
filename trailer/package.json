@@ -1,0 +1,14 @@
+{
+    "name": "nand-cad-trailer",
+    "private": true,
+    "scripts": {
+        "studio": "remotion studio src/index.jsx --public-dir=../public",
+        "render": "remotion render src/index.jsx Trailer ../public/video/trailer.mp4 --public-dir=../public --codec=h264 --crf=26 --browser-executable=/opt/pw-browsers/chromium_headless_shell-1243/chrome-headless-shell-linux64/chrome-headless-shell"
+    },
+    "dependencies": {
+        "@remotion/cli": "4.0.242",
+        "react": "18.3.1",
+        "react-dom": "18.3.1",
+        "remotion": "4.0.242"
+    }
+}
