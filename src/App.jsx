@@ -1,6 +1,7 @@
 import { useEffect, useMemo, useRef, useState } from 'react';
-import { WEDDING_DATE, names, hero, chapters, quiz, TICKETS_PER_ANSWER, counterSticker, letter, film } from './content';
-import { PeekingCat, SittingCat, SleepingCat, Rosette, Sparkle, PawTrail, MiniTicket } from './Ornaments';
+import { WEDDING_DATE, names, hero, quiz, TICKETS_PER_ANSWER, counterSticker, letter, film } from './content';
+import { PeekingCat, SleepingCat, Rosette, Sparkle, PawTrail, MiniTicket } from './Ornaments';
+import { Cast, Scenes, Bloopers, Reviews, Credits } from './Sections';
 import useParallax from './useParallax';
 
 const DAY = 86400000;
@@ -40,6 +41,8 @@ function anniversaryInfo(now) {
     };
 }
 
+const numberWord = (n) => ['zero', 'one', 'two', 'three', 'four', 'five', 'six', 'seven', 'eight', 'nine', 'ten'][n] || String(n);
+
 const ordinal = (n) => {
     const words = ['zeroth', 'first', 'second', 'third', 'fourth', 'fifth', 'sixth', 'seventh', 'eighth', 'ninth', 'tenth'];
     return words[n] || `${n}th`;
@@ -54,6 +57,7 @@ function Hero() {
         <header className="hero">
             <div className="scene">
                 <div className="scene-glow" data-speed="0.1" aria-hidden="true" />
+                <p className="scene-tag" data-speed="0.2">{hero.tagline}</p>
                 <h1 className="scene-type" data-speed="0.32">
                     <span>{names.her}</span>
                     <span className="amp">&amp;</span>
@@ -76,6 +80,7 @@ function Hero() {
                 <PeekingCat tone="red" className="peek-hero-2" />
                 <div className="hero-body">
                     <p className="ticket-kind">Admit two</p>
+                    <p className="ticket-show">Now showing: year {numberWord(a.years)}</p>
                     <p className="hero-line">{hero.line}</p>
                     <div className="serial">
                         <span className="serial-label">Day</span>
@@ -88,13 +93,13 @@ function Hero() {
                     {a.sameDay ? (
                         <>
                             <p className="stub-big">Today</p>
-                            <p className="stub-small">Happy {ordinal(a.years)} anniversary, {names.herShort}.</p>
+                            <p className="stub-small">Happy {ordinal(a.years)} anniversary, {names.her}.</p>
                         </>
                     ) : (
                         <>
                             <p className="stub-big">{a.left.days}</p>
                             <p className="stub-small">
-                                days to our {ordinal(a.years)}
+                                days to the premiere of our {ordinal(a.years)}
                                 <br />
                                 {nextLabel}
                             </p>
@@ -105,60 +110,10 @@ function Hero() {
                     )}
                 </div>
             </article>
-            <a className="scroll-cue" href="#story">
-                Start from the beginning
+            <a className="scroll-cue" href="#cast">
+                Roll the film
             </a>
         </header>
-    );
-}
-
-function Chapter({ chapter, index }) {
-    const n = chapter.photos.length;
-    const soloCutout = chapter.cutout && n === 0;
-    return (
-        <li className={`chapter ${index % 2 ? 'flip' : ''} ${chapter.cutout && !soloCutout ? 'has-pop' : ''}`}>
-            <div className="chapter-text">
-                <p className="chapter-no">No. {pad(index + 1, 2)}</p>
-                <p className="chapter-date">{chapter.date}</p>
-                <h3>{chapter.title}</h3>
-                <p>{chapter.text}</p>
-            </div>
-            {soloCutout ? (
-                <div className="chapter-cutout">
-                    <div className="cutout-halo" data-speed="0.12" aria-hidden="true" />
-                    <img src={chapter.cutout.src} alt={chapter.cutout.alt} loading="lazy" />
-                    <SittingCat className="cat-now" />
-                    <SittingCat tone="red" flip className="cat-now-2" />
-                </div>
-            ) : (
-                <div className={`chapter-photos ${n > 1 ? `grid-${n}` : ''}`}>
-                    {chapter.photos.map((p) => (
-                        <div className="photo-frame" key={p.src}>
-                            <img src={p.src} alt={p.alt} loading="lazy" data-speed="0.07" />
-                        </div>
-                    ))}
-                </div>
-            )}
-            {chapter.cutout && !soloCutout && (
-                <img className="chapter-pop sticker" src={chapter.cutout.src} alt={chapter.cutout.alt} loading="lazy" data-speed="-0.18" />
-            )}
-            {index === 4 && <Sparkle className="chapter-spark" data-speed="-0.4" />}
-        </li>
-    );
-}
-
-function Story() {
-    return (
-        <section id="story" className="story" aria-labelledby="story-title">
-            <h2 id="story-title" className="section-title">
-                Every ticket we kept
-            </h2>
-            <ol className="roll">
-                {chapters.map((c, i) => (
-                    <Chapter key={c.title} chapter={c} index={i} />
-                ))}
-            </ol>
-        </section>
     );
 }
 
@@ -263,6 +218,7 @@ function Letter({ open }) {
                 </div>
             ) : (
                 <article className="letter">
+                    <img className="letter-rings" src="cutouts/rings.webp" alt="" aria-hidden="true" />
                     <p className="letter-greeting">{letter.greeting}</p>
                     {letter.paragraphs.map((p) => (
                         <p key={p.slice(0, 24)}>{p}</p>
@@ -277,24 +233,26 @@ function Letter({ open }) {
 }
 
 function Film() {
-    const [available, setAvailable] = useState(null);
+    const [src, setSrc] = useState(null);
     useEffect(() => {
-        fetch(film.src, { method: 'HEAD' })
-            .then((r) => setAvailable(r.ok && (r.headers.get('content-type') || '').startsWith('video')))
-            .catch(() => setAvailable(false));
+        const isVideo = (url) =>
+            fetch(url, { method: 'HEAD' })
+                .then((r) => r.ok && (r.headers.get('content-type') || '').startsWith('video'))
+                .catch(() => false);
+        isVideo(film.own).then((own) => (own ? setSrc(film.own) : isVideo(film.trailer).then((t) => setSrc(t ? film.trailer : false))));
     }, []);
 
     return (
         <section className="film" aria-labelledby="film-title">
             <h2 id="film-title" className="section-title">
-                Our film
+                The trailer
             </h2>
             <div className="screen">
-                {available ? (
-                    <video src={film.src} poster={film.poster} controls playsInline preload="metadata" />
+                {src ? (
+                    <video src={src} poster={film.poster} controls playsInline preload="metadata" />
                 ) : (
                     <div className="screen-empty" style={{ backgroundImage: `url(${film.poster})` }}>
-                        <p>{available === null ? 'Loading the reel' : 'Still in the edit. Showing soon.'}</p>
+                        <p>{src === null ? 'Loading the reel' : 'Still in the edit. Showing soon.'}</p>
                     </div>
                 )}
             </div>
@@ -327,30 +285,25 @@ function MusicToggle() {
 
 export default function App() {
     const [redeemed, setRedeemed] = useState(false);
+    const days = anniversaryInfo(new Date()).daysTogether;
     useParallax();
     return (
         <>
             <Hero />
             <main>
-                <Story />
+                <div id="cast">
+                    <Cast />
+                </div>
+                <Scenes />
+                <Bloopers />
+                <Reviews days={days} />
                 <PawTrail />
                 <TicketCounter onRedeem={() => setRedeemed(true)} redeemed={redeemed} />
                 <Letter open={redeemed} />
                 <PawTrail className="trail-right" />
                 <Film />
             </main>
-            <footer className="footer">
-                <div className="footer-cats" aria-hidden="true">
-                    <SittingCat />
-                    <svg className="orn footer-heart" viewBox="0 0 24 22"><path d="M12 21 C 4 14 0 10 0 6 A6 6 0 0 1 12 4 A6 6 0 0 1 24 6 C24 10 20 14 12 21Z" /></svg>
-                    <SittingCat tone="red" flip />
-                </div>
-                <p>
-                    Valid for a lifetime. Not transferable.
-                    <br />
-                    For {names.herShort}, from {names.him}.
-                </p>
-            </footer>
+            <Credits her={names.her} him={names.him} />
             <MusicToggle />
         </>
     );
