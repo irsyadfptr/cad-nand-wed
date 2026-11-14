@@ -272,7 +272,7 @@ function Film() {
 
 function MusicToggle() {
     const audio = useMemo(() => {
-        const a = new Audio('/bg-music.mp3');
+        const a = new Audio('bg-music.mp3');
         a.loop = true;
         return a;
     }, []);
