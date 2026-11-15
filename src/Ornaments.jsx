@@ -120,3 +120,59 @@ export function MiniTicket({ className = '', label = 'Admit 2', style }) {
         </span>
     );
 }
+
+export function CatFace({ tone = 'ink', className = '' }) {
+    return (
+        <svg className={`orn cat cat-${tone} ${className}`} viewBox="0 0 120 92" aria-hidden="true">
+            <polygon className="cat-fur" points="24,40 26,4 54,28" />
+            <polygon className="cat-fur" points="66,28 94,4 96,40" />
+            <polygon className="cat-ear" points="30,32 31,15 46,28" />
+            <polygon className="cat-ear" points="74,28 89,15 90,32" />
+            <ellipse className="cat-fur" cx="60" cy="56" rx="40" ry="33" />
+            <ellipse className="cat-eye" cx="45" cy="52" rx="6.5" ry="7.5" />
+            <ellipse className="cat-eye" cx="75" cy="52" rx="6.5" ry="7.5" />
+            <ellipse className="cat-pupil" cx="45" cy="53" rx="2.2" ry="5.5" />
+            <ellipse className="cat-pupil" cx="75" cy="53" rx="2.2" ry="5.5" />
+            <path className="cat-nose" d="M56 63 h8 l-4 4 z" />
+            <path className="cat-line" d="M60 67 q-4 5 -9 2 M60 67 q4 5 9 2 M12 60 l22 2 M12 69 l22 -2 M108 60 l-22 2 M108 69 l-22 -2" />
+        </svg>
+    );
+}
+
+export function WalkingCat({ tone = 'ink', className = '' }) {
+    return (
+        <svg className={`orn cat walking-cat cat-${tone} ${className}`} viewBox="0 0 170 96" aria-hidden="true">
+            <path className="cat-tail" d="M34 44 C 14 40 8 20 20 8" />
+            <rect className="cat-fur leg leg-a" x="44" y="54" width="9" height="36" rx="4.5" />
+            <rect className="cat-fur leg leg-b" x="60" y="54" width="9" height="36" rx="4.5" />
+            <rect className="cat-fur leg leg-b" x="104" y="54" width="9" height="36" rx="4.5" />
+            <rect className="cat-fur leg leg-a" x="120" y="54" width="9" height="36" rx="4.5" />
+            <ellipse className="cat-fur" cx="86" cy="50" rx="52" ry="20" />
+            <polygon className="cat-fur" points="130,24 134,2 148,18" />
+            <polygon className="cat-fur" points="148,18 162,4 162,28" />
+            <circle className="cat-fur" cx="148" cy="34" r="18" />
+            <ellipse className="cat-eye" cx="155" cy="31" rx="3" ry="4" />
+            <path className="cat-nose" d="M163 37 l4 -1 l-2 4 z" />
+        </svg>
+    );
+}
+
+export function Fish({ className = '', style }) {
+    return (
+        <svg className={`orn fish ${className}`} viewBox="0 0 64 34" aria-hidden="true" style={style}>
+            <path d="M6 17 C 16 2 40 2 50 17 C 40 32 16 32 6 17 Z" />
+            <path d="M48 17 L 63 5 L 60 17 L 63 29 Z" />
+            <circle className="fish-eye" cx="17" cy="15" r="2.6" />
+        </svg>
+    );
+}
+
+export function Yarn({ className = '', style }) {
+    return (
+        <svg className={`orn yarn ${className}`} viewBox="0 0 80 70" aria-hidden="true" style={style}>
+            <circle cx="34" cy="34" r="30" className="yarn-ball" />
+            <path className="yarn-line" d="M10 22 C 28 30 44 30 60 18 M6 36 C 26 44 46 44 64 32 M12 50 C 28 56 44 54 58 46 M24 6 C 18 24 20 46 30 64 M44 6 C 52 26 50 46 40 64" />
+            <path className="yarn-thread" d="M62 46 C 70 52 74 60 78 68" />
+        </svg>
+    );
+}

@@ -1,15 +1,15 @@
-# Nand & Cad — a romantic comedy, three years running
+# Nand & Cad — three years, two cats
 
 A small site for Nand, built for our 3rd anniversary on 25 December 2026. React + Vite + GSAP.
 
-- **Hero** — layered parallax poster with a live day count and a countdown ticket.
-- **Starring** — the cast, with 3D tilt cards (and two cats as themselves).
-- **Scenes** — a film reel of rom-com beats that scrolls sideways (GSAP ScrollTrigger).
-- **Bloopers** — polaroid board plus a "Find Nand" mini game.
-- **Critics** — reviews, rating and runtime.
-- **Ticket counter** — 5-question quiz; 150 tickets unlocks the letter.
-- **Trailer** — rendered with Remotion from `trailer/`.
-- **Credits** — the end roll.
+- **Hero** — layered parallax with a live day count and a countdown to 25 December.
+- **Meet the cats** — the two of us as cats, in cat-ear photo frames.
+- **Purr-fect moments** — a photo wall whose columns drift at different speeds.
+- **Cat-astrophes** — the bloopers, plus a "Find Nand" mini game.
+- **Three years in numbers** — the live day count and a few silly stats.
+- **Feed the cats** — a 5-question quiz; each right answer drops a fish in the bowl, five fish open the letter.
+- **A little film for you** — rendered with Remotion from `trailer/`.
+- **Happy 3rd anniversary** — the finale.
 
 ## Editing
 
@@ -25,7 +25,7 @@ npm run dev
 npm run build
 ```
 
-## Re-render the trailer
+## Re-render the film
 
 ```
 cd trailer

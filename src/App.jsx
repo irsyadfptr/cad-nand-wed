@@ -1,7 +1,7 @@
 import { useEffect, useMemo, useRef, useState } from 'react';
-import { WEDDING_DATE, names, hero, quiz, TICKETS_PER_ANSWER, counterSticker, letter, film } from './content';
-import { PeekingCat, SleepingCat, Rosette, Sparkle, PawTrail, MiniTicket } from './Ornaments';
-import { Cast, Scenes, Bloopers, Reviews, Credits } from './Sections';
+import { WEDDING_DATE, names, hero, quiz, letter, film } from './content';
+import { PeekingCat, SittingCat, SleepingCat, Rosette, Sparkle, PawTrail, Fish, Yarn } from './Ornaments';
+import { MeetTheCats, Moments, Catastrophes, Numbers, CatWalk, Finale } from './Sections';
 import useParallax from './useParallax';
 
 const DAY = 86400000;
@@ -41,8 +41,6 @@ function anniversaryInfo(now) {
     };
 }
 
-const numberWord = (n) => ['zero', 'one', 'two', 'three', 'four', 'five', 'six', 'seven', 'eight', 'nine', 'ten'][n] || String(n);
-
 const ordinal = (n) => {
     const words = ['zeroth', 'first', 'second', 'third', 'fourth', 'fifth', 'sixth', 'seventh', 'eighth', 'ninth', 'tenth'];
     return words[n] || `${n}th`;
@@ -57,19 +55,25 @@ function Hero() {
         <header className="hero">
             <div className="scene">
                 <div className="scene-glow" data-speed="0.1" aria-hidden="true" />
-                <p className="scene-tag" data-speed="0.2">{hero.tagline}</p>
+                <p className="scene-tag" data-speed="0.2">{hero.kicker}</p>
                 <h1 className="scene-type" data-speed="0.32">
-                    <span>{names.her}</span>
+                    <span className="name">
+                        {names.her}
+                        <SittingCat tone="red" className="name-cat" />
+                    </span>
                     <span className="amp">&amp;</span>
-                    <span>{names.him}</span>
+                    <span className="name">
+                        {names.him}
+                        <SittingCat flip className="name-cat" />
+                    </span>
                 </h1>
 
                 <Sparkle className="s1" data-speed="-0.5" />
                 <Sparkle className="s2" data-speed="-0.25" />
                 <Sparkle className="s3" data-speed="-0.6" />
                 <Sparkle className="s4" data-speed="0.2" />
-                <div className="float f1" data-speed="-0.45"><MiniTicket /></div>
-                <div className="float f2" data-speed="-0.7"><MiniTicket label="No. 3" /></div>
+                <div className="float f1" data-speed="-0.45"><Fish /></div>
+                <div className="float f2" data-speed="-0.7"><Yarn /></div>
                 <div className="float f3" data-speed="-0.3"><Rosette /></div>
 
                 <img className="scene-couple" src={hero.cutout} alt={`${names.her} and ${names.him} laughing together`} data-speed="0.06" />
@@ -79,13 +83,13 @@ function Hero() {
                 <PeekingCat className="peek-hero" />
                 <PeekingCat tone="red" className="peek-hero-2" />
                 <div className="hero-body">
-                    <p className="ticket-kind">Admit two</p>
-                    <p className="ticket-show">Now showing: year {numberWord(a.years)}</p>
+                    <p className="ticket-kind">Our anniversary</p>
+                    <p className="ticket-show">Three years of us</p>
                     <p className="hero-line">{hero.line}</p>
                     <div className="serial">
                         <span className="serial-label">Day</span>
-                        <span className="serial-num">{pad(a.daysTogether, 4)}</span>
-                        <span className="serial-label">of us, since 25 December 2023</span>
+                        <span className="serial-num">{a.daysTogether.toLocaleString('en-GB')}</span>
+                        <span className="serial-label">of being married to you, since 25 December 2023</span>
                     </div>
                 </div>
 
@@ -99,7 +103,7 @@ function Hero() {
                         <>
                             <p className="stub-big">{a.left.days}</p>
                             <p className="stub-small">
-                                days to the premiere of our {ordinal(a.years)}
+                                days to our {ordinal(a.years)} anniversary
                                 <br />
                                 {nextLabel}
                             </p>
@@ -110,59 +114,62 @@ function Hero() {
                     )}
                 </div>
             </article>
-            <a className="scroll-cue" href="#cast">
-                Roll the film
+            <a className="scroll-cue" href="#meet">
+                Meet the cats
             </a>
         </header>
     );
 }
 
-function TicketCounter({ onRedeem, redeemed }) {
-    const goal = quiz.length * TICKETS_PER_ANSWER;
+function FeedTheCats({ onOpen, opened }) {
     const [step, setStep] = useState(0);
-    const [tickets, setTickets] = useState(0);
     const [wrong, setWrong] = useState(null);
-    const [shown, setShown] = useState(0);
+    const [splash, setSplash] = useState(0);
     const done = step >= quiz.length;
-
-    // Count the display up so the tickets feel dispensed, not just added.
-    useEffect(() => {
-        if (shown === tickets) return;
-        const id = setTimeout(() => setShown((s) => Math.min(tickets, s + 2)), 28);
-        return () => clearTimeout(id);
-    }, [shown, tickets]);
 
     const pick = (i) => {
         if (i === quiz[step].answer) {
-            setTickets((t) => t + TICKETS_PER_ANSWER);
             setWrong(null);
             setStep((s) => s + 1);
+            setSplash((n) => n + 1);
         } else {
             setWrong(i);
         }
     };
 
     const current = quiz[step];
+    const mood = done ? 'Full and very happy' : step >= 3 ? 'Purring' : step >= 1 ? 'Interested' : 'Hungry';
 
     return (
-        <section className="counter-section" aria-labelledby="counter-title">
-            <h2 id="counter-title" className="section-title">
-                The ticket counter
+        <section className="feed" aria-labelledby="feed-title">
+            <h2 id="feed-title" className="section-title">
+                Feed the cats
             </h2>
-            <p className="section-intro">
-                Answer right and the machine pays out {TICKETS_PER_ANSWER} tickets. Collect {goal} to redeem your prize.
-            </p>
+            <p className="section-intro">Every right answer drops a fish in the bowl. Five fish and the cats will hand over your letter.</p>
 
-            <div className="machine">
-                <PeekingCat className="peek-machine" />
-                <img className="machine-sticker sticker" src={counterSticker.src} alt={counterSticker.alt} loading="lazy" data-speed="-0.15" />
-                <div className="machine-display" aria-live="polite">
-                    <span className="display-num">{pad(shown, 3)}</span>
-                    <span className="display-goal">/ {goal} tickets</span>
-                </div>
-
-                <div className="ribbon" aria-hidden="true">
-                    <div className="ribbon-strip" style={{ width: `${(shown / goal) * 100}%` }} />
+            <div className="feeder">
+                <div className="feeder-stage" aria-live="polite">
+                    <SittingCat tone="red" className={`feeder-cat ${splash ? 'is-happy' : ''}`} key={`l${splash}`} />
+                    <div className="bowl-wrap">
+                        <div className="bowl-fish">
+                            {quiz.map((_, i) => (
+                                <Fish key={i} className={i < step ? 'is-in' : 'is-empty'} />
+                            ))}
+                        </div>
+                        <svg className="bowl" viewBox="0 0 200 70" aria-hidden="true">
+                            <path d="M8 10 H192 C186 50 160 66 100 66 C40 66 14 50 8 10 Z" />
+                            <path className="bowl-rim" d="M8 10 H192" />
+                        </svg>
+                        <p className="feeder-mood">
+                            {step} of {quiz.length} fish. Mood: {mood}
+                        </p>
+                    </div>
+                    <SittingCat flip className={`feeder-cat ${splash ? 'is-happy' : ''}`} key={`r${splash}`} />
+                    {splash > 0 && (
+                        <svg className="feeder-heart" key={`h${splash}`} viewBox="0 0 24 22" aria-hidden="true">
+                            <path d="M12 21 C 4 14 0 10 0 6 A6 6 0 0 1 12 4 A6 6 0 0 1 24 6 C24 10 20 14 12 21Z" />
+                        </svg>
+                    )}
                 </div>
 
                 {!done ? (
@@ -181,17 +188,17 @@ function TicketCounter({ onRedeem, redeemed }) {
                                     disabled={wrong === i}
                                 >
                                     {o}
-                                    {wrong === i && <span className="option-note">Not this one, try again</span>}
+                                    {wrong === i && <span className="option-note">The cats disagree. Try again.</span>}
                                 </button>
                             ))}
                         </div>
                     </div>
                 ) : (
                     <div className="question done">
-                        <p className="question-text">Jackpot. You know us by heart.</p>
-                        {!redeemed && (
-                            <button type="button" className="redeem" onClick={onRedeem} disabled={shown < goal}>
-                                Redeem {goal} tickets
+                        <p className="question-text">Five fish. The cats are full and you know us by heart.</p>
+                        {!opened && (
+                            <button type="button" className="redeem" onClick={onOpen}>
+                                Open your letter
                             </button>
                         )}
                     </div>
@@ -210,11 +217,11 @@ function Letter({ open }) {
     return (
         <section ref={ref} className={`letter-section ${open ? 'is-open' : ''}`} aria-labelledby="letter-title">
             <h2 id="letter-title" className="section-title">
-                Your prize
+                A letter for you
             </h2>
             {!open ? (
                 <div className="envelope" aria-label="A sealed letter">
-                    <p>Sealed until the counter reaches 150.</p>
+                    <p>Sealed until the cats have had five fish.</p>
                 </div>
             ) : (
                 <article className="letter">
@@ -239,20 +246,20 @@ function Film() {
             fetch(url, { method: 'HEAD' })
                 .then((r) => r.ok && (r.headers.get('content-type') || '').startsWith('video'))
                 .catch(() => false);
-        isVideo(film.own).then((own) => (own ? setSrc(film.own) : isVideo(film.trailer).then((t) => setSrc(t ? film.trailer : false))));
+        isVideo(film.own).then((own) => (own ? setSrc(film.own) : isVideo(film.rendered).then((t) => setSrc(t ? film.rendered : false))));
     }, []);
 
     return (
         <section className="film" aria-labelledby="film-title">
             <h2 id="film-title" className="section-title">
-                The trailer
+                A little film for you
             </h2>
             <div className="screen">
                 {src ? (
                     <video src={src} poster={film.poster} controls playsInline preload="metadata" />
                 ) : (
                     <div className="screen-empty" style={{ backgroundImage: `url(${film.poster})` }}>
-                        <p>{src === null ? 'Loading the reel' : 'Still in the edit. Showing soon.'}</p>
+                        <p>{src === null ? 'Loading the film' : 'Still in the edit. Showing soon.'}</p>
                     </div>
                 )}
             </div>
@@ -284,26 +291,28 @@ function MusicToggle() {
 }
 
 export default function App() {
-    const [redeemed, setRedeemed] = useState(false);
+    const [opened, setOpened] = useState(false);
     const days = anniversaryInfo(new Date()).daysTogether;
     useParallax();
     return (
         <>
             <Hero />
             <main>
-                <div id="cast">
-                    <Cast />
+                <div id="meet">
+                    <MeetTheCats />
                 </div>
-                <Scenes />
-                <Bloopers />
-                <Reviews days={days} />
+                <CatWalk tone="red" />
+                <Moments />
+                <Catastrophes />
+                <CatWalk reverse />
+                <Numbers days={days} />
                 <PawTrail />
-                <TicketCounter onRedeem={() => setRedeemed(true)} redeemed={redeemed} />
-                <Letter open={redeemed} />
+                <FeedTheCats onOpen={() => setOpened(true)} opened={opened} />
+                <Letter open={opened} />
                 <PawTrail className="trail-right" />
                 <Film />
             </main>
-            <Credits her={names.her} him={names.him} />
+            <Finale her={names.her} him={names.him} />
             <MusicToggle />
         </>
     );

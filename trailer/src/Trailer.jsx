@@ -17,6 +17,21 @@ const STOCK = '#f9dde2';
 const RED = '#c8283f';
 const PAPER = '#f3f1f6';
 
+function Cat({ color = INK, flip = false, size = 120, style }) {
+    return (
+        <svg viewBox="0 0 100 120" width={size} style={{ transform: flip ? 'scaleX(-1)' : undefined, ...style }}>
+            <path d="M30 112 C 6 114 2 90 16 82" fill="none" stroke={color} strokeWidth="8" strokeLinecap="round" />
+            <path d="M30 116 C 16 116 14 94 22 76 C 28 62 40 54 52 54 C 66 54 75 66 77 82 C 79 100 74 116 60 116 Z" fill={color} />
+            <polygon points="42,30 44,6 58,22" fill={color} />
+            <polygon points="62,20 76,4 78,30" fill={color} />
+            <circle cx="60" cy="38" r="21" fill={color} />
+            <ellipse cx="53" cy="37" rx="3.5" ry="4.5" fill="#d8d35a" />
+            <ellipse cx="69" cy="37" rx="3.5" ry="4.5" fill="#d8d35a" />
+            <path d="M59 45 h5 l-2.5 3 z" fill="#f2a3b0" />
+        </svg>
+    );
+}
+
 // Fade a clip in and out over its own length.
 function useFade(len, edge = 12) {
     const f = useCurrentFrame();
@@ -84,77 +99,83 @@ function TitleCard({ len }) {
     const rise = spring({ frame: f, fps, config: { damping: 18 } });
     return (
         <AbsoluteFill style={{ background: PAPER, opacity: o, alignItems: 'center' }}>
-            <div style={{ position: 'absolute', top: 80, fontFamily: serif, fontStyle: 'italic', fontSize: 38, color: '#5e5468' }}>A romantic comedy</div>
+            <div style={{ position: 'absolute', top: 80, fontFamily: serif, fontStyle: 'italic', fontSize: 38, color: '#5e5468' }}>Three years of</div>
             <div
                 style={{
                     position: 'absolute',
-                    top: 130,
+                    top: 190,
                     left: 40,
                     right: 40,
                     display: 'flex',
                     justifyContent: 'space-between',
                     fontFamily: display,
                     fontWeight: 900,
-                    fontSize: 300,
+                    fontSize: 260,
                     lineHeight: 0.8,
                     color: INK,
                     transform: `scale(${0.9 + pop * 0.1})`,
                     opacity: pop,
                 }}
             >
-                <span>NAND</span>
-                <span>CAD</span>
+                <span style={{ position: 'relative' }}>
+                    NAND
+                    <span style={{ position: 'absolute', left: 10, bottom: '100%' }}><Cat color={RED} size={90} /></span>
+                </span>
+                <span style={{ position: 'relative' }}>
+                    CAD
+                    <span style={{ position: 'absolute', right: 10, bottom: '100%' }}><Cat color={INK} size={90} flip /></span>
+                </span>
             </div>
             <Img src={staticFile('cutouts/laugh.webp')} style={{ position: 'absolute', bottom: 0, height: 560, transform: `translateY(${(1 - rise) * 400}px)` }} />
         </AbsoluteFill>
     );
 }
 
-function Ticket({ len }) {
+function Anniversary({ len }) {
     const f = useCurrentFrame();
     const { fps } = useVideoConfig();
     const o = useFade(len, 10);
-    const slide = spring({ frame: f, fps, config: { damping: 16 } });
+    const pop = spring({ frame: f, fps, config: { damping: 12 } });
+    const catL = spring({ frame: f - 12, fps, config: { damping: 10 } });
+    const catR = spring({ frame: f - 20, fps, config: { damping: 10 } });
+    const beat = 1 + Math.max(0, Math.sin(f / 5)) * 0.18;
     return (
-        <AbsoluteFill style={{ background: INK, alignItems: 'center', justifyContent: 'center', opacity: o }}>
-            <div
-                style={{
-                    width: 900,
-                    display: 'flex',
-                    background: STOCK,
-                    borderRadius: 8,
-                    transform: `translateY(${(1 - slide) * -500}px)`,
-                    clipPath: `inset(0 0 ${(1 - slide) * 100}% 0)`,
-                }}
-            >
-                <div style={{ flex: 1, padding: '44px 52px' }}>
-                    <div style={{ fontFamily: display, fontWeight: 900, fontSize: 26, letterSpacing: '0.22em', color: RED }}>ADMIT TWO</div>
-                    <div style={{ fontFamily: display, fontWeight: 900, fontSize: 92, lineHeight: 0.9, color: INK, marginTop: 8 }}>YEAR THREE</div>
-                    <div style={{ fontFamily: serif, fontStyle: 'italic', fontSize: 34, color: '#6b4c5a', marginTop: 14 }}>Now showing</div>
-                </div>
-                <div style={{ width: 250, borderLeft: '4px dashed rgba(43,22,34,0.35)', display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center' }}>
-                    <div style={{ fontFamily: display, fontWeight: 900, fontSize: 96, color: RED, lineHeight: 0.9 }}>25.12</div>
-                    <div style={{ fontFamily: display, fontWeight: 700, fontSize: 36, color: INK }}>2026</div>
+        <AbsoluteFill style={{ background: STOCK, opacity: o, alignItems: 'center', justifyContent: 'center' }}>
+            <div style={{ fontFamily: display, fontWeight: 700, fontSize: 34, color: RED, letterSpacing: '0.06em' }}>25 DECEMBER 2026</div>
+            <div style={{ fontFamily: display, fontWeight: 900, fontSize: 150, lineHeight: 0.85, color: INK, textAlign: 'center', transform: `scale(${0.85 + pop * 0.15})`, opacity: pop }}>
+                HAPPY 3RD
+                <br />
+                ANNIVERSARY, <span style={{ color: RED }}>NAND</span>
+            </div>
+            <div style={{ display: 'flex', alignItems: 'flex-end', gap: 16, marginTop: 30 }}>
+                <Cat color={RED} size={110} style={{ transform: `translateY(${(1 - catL) * 200}px)` }} />
+                <svg viewBox="0 0 24 22" width={40} style={{ transform: `scale(${beat})`, marginBottom: 60 }}>
+                    <path d="M12 21 C 4 14 0 10 0 6 A6 6 0 0 1 12 4 A6 6 0 0 1 24 6 C24 10 20 14 12 21Z" fill={RED} />
+                </svg>
+                <div style={{ transform: `translateY(${(1 - catR) * 200}px)` }}>
+                    <Cat color={INK} size={110} flip />
                 </div>
             </div>
+            <div style={{ fontFamily: serif, fontStyle: 'italic', fontSize: 36, color: INK, marginTop: 20 }}>Love, Cad</div>
         </AbsoluteFill>
     );
 }
 
 // The running order: [component, length in frames, props]. 30 fps.
 const CUTS = [
-    [Card, 75, { text: 'This December', sub: 'from the people who brought you one wedding' }],
-    [Shot, 80, { src: 'photos/graduation.jpg', scene: 'Scene 01', caption: 'He brought snacks', origin: '45% 60%' }],
-    [Shot, 80, { src: 'photos/kitchen.jpg', scene: 'Scene 03', caption: 'She brought the smile', origin: '55% 50%' }],
-    [Card, 55, { text: 'Nobody brought a plan', bg: STOCK, color: INK }],
-    [Cutout, 85, { src: 'cutouts/stairs.webp', scene: 'Scene 02', caption: 'The grand gesture' }],
-    [Cutout, 85, { src: 'cutouts/walk.webp', scene: 'Scene 04', caption: 'The big day' }],
-    [Shot, 70, { src: 'photos/toss.jpg', scene: 'Scene 05', caption: 'The dance number' }],
-    [Shot, 70, { src: 'photos/goat.jpg', scene: 'Scene 06', caption: 'The comic relief', origin: '60% 70%' }],
-    [Shot, 70, { src: 'photos/arcade.jpg', scene: 'Scene 08', caption: 'The plot twist', origin: '50% 30%' }],
-    [Shot, 85, { src: 'photos/holdhands.jpg', scene: 'Scene 09', caption: 'The quiet bit', origin: '45% 70%' }],
-    [TitleCard, 110, {}],
-    [Ticket, 95, {}],
+    [Card, 80, { text: 'Three years ago', sub: 'on 25 December 2023' }],
+    [Shot, 85, { src: 'photos/walk.jpg', caption: 'Nand married Cad', origin: '50% 45%' }],
+    [Shot, 70, { src: 'photos/hug.jpg', caption: 'Everybody cried', origin: '50% 40%' }],
+    [Shot, 70, { src: 'photos/toss.jpg', caption: 'Everybody danced' }],
+    [Card, 55, { text: 'And then came', sub: 'the good stuff', bg: STOCK, color: INK }],
+    [Shot, 65, { src: 'photos/kitchen.jpg', caption: 'Coffee dates', origin: '55% 50%' }],
+    [Shot, 65, { src: 'photos/goat.jpg', caption: 'Comedy nights', origin: '60% 70%' }],
+    [Shot, 65, { src: 'photos/arcade.jpg', caption: 'Arcade jackpots', origin: '50% 30%' }],
+    [Shot, 65, { src: 'photos/onepiece.jpg', caption: 'Wedding crashing', origin: '50% 50%' }],
+    [Cutout, 85, { src: 'cutouts/stairs.webp', caption: 'Too many flowers' }],
+    [Shot, 80, { src: 'photos/holdhands.jpg', caption: 'And quiet days', origin: '45% 70%' }],
+    [TitleCard, 105, {}],
+    [Anniversary, 140, {}],
 ];
 const OVERLAP = 10;
 export const TRAILER_FRAMES = CUTS.reduce((t, [, len]) => t + len - OVERLAP, OVERLAP);
@@ -175,11 +196,6 @@ export function Trailer() {
                     </Sequence>
                 );
             })}
-            {/* letterbox bars */}
-            <div style={{ position: 'absolute', left: 0, right: 0, top: 0, height: 40, background: '#000' }} />
-            <div style={{ position: 'absolute', left: 0, right: 0, bottom: 0, height: 40, background: '#000' }} />
-            {/* film grain flicker */}
-            <AbsoluteFill style={{ background: '#fff', opacity: (Math.sin(f * 12.9898) * 43758.5453) % 1 > 0.92 ? 0.025 : 0, pointerEvents: 'none' }} />
         </AbsoluteFill>
     );
 }

@@ -1,12 +1,11 @@
 import { useLayoutEffect, useRef, useState } from 'react';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
-import { cast, scenes, bloopers, findNand, reviews, credits } from './content';
-import { SittingCat, Sparkle } from './Ornaments';
+import { cats, moments, bloopers, findNand, numbers } from './content';
+import { CatFace, PeekingCat, SittingCat, WalkingCat, Paw, Sparkle, Yarn } from './Ornaments';
 
 gsap.registerPlugin(ScrollTrigger);
 
-const pad = (n) => String(n).padStart(2, '0');
 const reduced = () => typeof window !== 'undefined' && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
 // Card that leans toward the pointer in 3D.
@@ -19,8 +18,6 @@ export function Tilt({ className = '', children, max = 10 }) {
         const y = (e.clientY - r.top) / r.height - 0.5;
         ref.current.style.setProperty('--ry', `${x * max}deg`);
         ref.current.style.setProperty('--rx', `${-y * max}deg`);
-        ref.current.style.setProperty('--gx', `${(x + 0.5) * 100}%`);
-        ref.current.style.setProperty('--gy', `${(y + 0.5) * 100}%`);
     };
     const leave = () => {
         ref.current.style.setProperty('--ry', '0deg');
@@ -33,102 +30,94 @@ export function Tilt({ className = '', children, max = 10 }) {
     );
 }
 
-export function Cast() {
+// A cat strolls across the page as you scroll past.
+export function CatWalk({ tone = 'ink', reverse = false }) {
+    const lane = useRef(null);
+    const cat = useRef(null);
+    useLayoutEffect(() => {
+        if (reduced()) return;
+        const tween = gsap.fromTo(
+            cat.current,
+            { x: reverse ? '100vw' : '-30vw' },
+            {
+                x: reverse ? '-30vw' : '100vw',
+                ease: 'none',
+                scrollTrigger: { trigger: lane.current, start: 'top bottom', end: 'bottom top', scrub: 0.6 },
+            }
+        );
+        return () => {
+            tween.scrollTrigger?.kill();
+            tween.kill();
+        };
+    }, [reverse]);
     return (
-        <section className="cast" aria-labelledby="cast-title">
-            <h2 id="cast-title" className="section-title">
-                Starring
+        <div ref={lane} className={`cat-lane ${reverse ? 'is-reverse' : ''}`} aria-hidden="true">
+            <div ref={cat} className="cat-walker">
+                <WalkingCat tone={tone} />
+            </div>
+        </div>
+    );
+}
+
+export function MeetTheCats() {
+    return (
+        <section className="meet" aria-labelledby="meet-title">
+            <h2 id="meet-title" className="section-title">
+                Meet the cats
             </h2>
-            <div className="cast-grid">
-                {cast.map((c, i) => (
-                    <Tilt key={c.name} className={`cast-card ${i ? 'is-right' : ''}`}>
-                        <div className="cast-stage">
-                            <img src={c.img} alt={`${c.name}, smiling`} loading="lazy" />
+            <p className="section-intro">Two cats, one house, three years. Neither of them will admit who started it.</p>
+            <div className="meet-grid">
+                {cats.map((c) => (
+                    <Tilt key={c.name} className={`cat-card tone-${c.tone}`}>
+                        <div className="ear-frame">
+                            <img src={c.photo} alt={c.alt} />
                         </div>
-                        <div className="cast-text">
-                            <p className="cast-role">{c.role}</p>
+                        <CatFace tone={c.tone} className="cat-card-badge" />
+                        <div className="cat-card-text">
                             <h3>{c.name}</h3>
-                            <p>{c.bio}</p>
+                            <p className="cat-breed">{c.breed}</p>
+                            <dl>
+                                <div>
+                                    <dt>Likes</dt>
+                                    <dd>{c.likes}</dd>
+                                </div>
+                                <div>
+                                    <dt>Dislikes</dt>
+                                    <dd>{c.dislikes}</dd>
+                                </div>
+                            </dl>
                         </div>
                     </Tilt>
                 ))}
-            </div>
-            <div className="cast-extra">
-                <SittingCat />
-                <p>
-                    And introducing <strong>two cats</strong> as themselves
-                </p>
-                <SittingCat tone="red" flip />
             </div>
         </section>
     );
 }
 
-export function Scenes() {
-    const section = useRef(null);
-    const track = useRef(null);
-
-    useLayoutEffect(() => {
-        if (reduced()) return;
-        const mm = gsap.matchMedia();
-        mm.add('(min-width: 821px)', () => {
-            const distance = () => track.current.scrollWidth - window.innerWidth;
-            const slide = gsap.to(track.current, {
-                x: () => -distance(),
-                ease: 'none',
-                scrollTrigger: {
-                    trigger: section.current,
-                    pin: true,
-                    scrub: 0.8,
-                    start: 'top top',
-                    end: () => `+=${distance()}`,
-                    invalidateOnRefresh: true,
-                },
-            });
-            // Inside each frame the picture drifts the other way: depth inside the reel.
-            gsap.utils.toArray('.frame-media > *', track.current).forEach((el) => {
-                gsap.fromTo(
-                    el,
-                    { xPercent: 7 },
-                    {
-                        xPercent: -7,
-                        ease: 'none',
-                        scrollTrigger: { trigger: el.parentElement, containerAnimation: slide, start: 'left right', end: 'right left', scrub: true },
-                    }
-                );
-            });
-        });
-        // re-measure once images have sized the track
-        const t = setTimeout(() => ScrollTrigger.refresh(), 600);
-        return () => {
-            clearTimeout(t);
-            mm.revert();
-        };
-    }, []);
-
+export function Moments() {
+    // three columns that drift at different speeds as you scroll
+    const cols = [[], [], []];
+    moments.forEach((m, i) => cols[i % 3].push({ ...m, i }));
+    const speeds = ['0.04', '-0.06', '0.1'];
     return (
-        <section ref={section} className="scenes" aria-labelledby="scenes-title">
-            <div className="reel-head">
-                <h2 id="scenes-title" className="section-title">
-                    Every rom-com beat, played by us
-                </h2>
-                <p className="reel-hint">Keep scrolling. The reel rolls sideways.</p>
-            </div>
-            <div className="reel">
-                <ol ref={track} className="reel-track">
-                    {scenes.map((s, i) => (
-                        <li key={s.title} className={`frame ${s.cutout ? 'is-cutout' : ''}`}>
-                            <div className="frame-media">
-                                {s.cutout ? <img src={s.cutout} alt={s.alt} loading="lazy" /> : <img src={s.img} alt={s.alt} loading="lazy" />}
-                            </div>
-                            <div className="frame-caption">
-                                <p className="frame-no">Scene {pad(i + 1)}</p>
-                                <h3>{s.title}</h3>
-                                <p>{s.line}</p>
-                            </div>
-                        </li>
-                    ))}
-                </ol>
+        <section className="moments" aria-labelledby="moments-title">
+            <h2 id="moments-title" className="section-title">
+                Purr-fect moments
+            </h2>
+            <p className="section-intro">Three years of the good stuff, sweet and silly in equal parts.</p>
+            <div className="moment-cols">
+                {cols.map((col, c) => (
+                    <div key={c} className="moment-col" data-speed={speeds[c]}>
+                        {col.map((m) => (
+                            <figure key={m.img} className={`moment r${m.i % 4}`}>
+                                {m.i % 4 === 1 && <PeekingCat tone={m.i % 8 === 1 ? 'red' : 'ink'} className="moment-peek" />}
+                                {m.i === 6 && <Paw className="moment-paw" />}
+                                <img src={m.img} alt={m.alt} />
+                                <figcaption>{m.caption}</figcaption>
+                            </figure>
+                        ))}
+                    </div>
+                ))}
             </div>
         </section>
     );
@@ -148,7 +137,7 @@ function FindNand() {
     return (
         <figure className="find-nand">
             <button type="button" className={`find-photo ${state.found ? 'is-found' : ''}`} onClick={click} disabled={state.found} aria-label="Tap where you think Nand is">
-                <img src={findNand.img} alt={findNand.alt} loading="lazy" />
+                <img src={findNand.img} alt={findNand.alt} />
                 {state.mark && !state.found && <span className="find-miss" style={{ left: `${state.mark.x * 100}%`, top: `${state.mark.y * 100}%` }} />}
                 {state.found && <span className="find-ring" style={{ left: `${findNand.x * 100}%`, top: `${findNand.y * 100}%` }} />}
             </button>
@@ -158,98 +147,71 @@ function FindNand() {
                     {state.found ? findNand.found : state.misses ? hints[Math.min(state.misses - 1, hints.length - 1)] : 'Tap where you think she is.'}
                 </span>
             </figcaption>
+            <PeekingCat tone="red" className="find-peek" />
         </figure>
     );
 }
 
-export function Bloopers() {
+export function Catastrophes() {
     return (
         <section className="bloopers" aria-labelledby="bloopers-title">
             <h2 id="bloopers-title" className="section-title">
-                Bloopers
+                Cat-astrophes
             </h2>
-            <p className="section-intro">The scenes that did not make the final cut, but should have.</p>
+            <p className="section-intro">The photos we were told to delete. We did not.</p>
             <div className="board">
                 <FindNand />
                 {bloopers.map((b, i) => (
                     <Tilt key={b.img} className={`polaroid p${i % 4}`} max={14}>
-                        <img src={b.img} alt={b.alt} loading="lazy" />
+                        <img src={b.img} alt={b.alt} />
                         <p>{b.caption}</p>
                     </Tilt>
                 ))}
+                <Yarn className="board-yarn" />
             </div>
         </section>
     );
 }
 
-function Stars() {
+export function Numbers({ days }) {
+    const all = [{ value: days.toLocaleString('en-GB'), label: 'days married, and counting', live: true }, ...numbers];
     return (
-        <span className="stars" aria-label="Five stars">
-            {[0, 1, 2, 3, 4].map((i) => (
-                <Sparkle key={i} className="star" />
-            ))}
-        </span>
-    );
-}
-
-export function Reviews({ days }) {
-    return (
-        <section className="reviews" aria-labelledby="reviews-title">
-            <h2 id="reviews-title" className="section-title">
-                What the critics said
+        <section className="numbers" aria-labelledby="numbers-title">
+            <h2 id="numbers-title" className="section-title">
+                Three years in numbers
             </h2>
-            <ul className="review-list">
-                {reviews.map((r) => (
-                    <li key={r.quote} className="review">
-                        <Stars />
-                        <blockquote>{r.quote}</blockquote>
-                        <p className="review-by">{r.by}</p>
+            <ul className="number-list">
+                {all.map((n) => (
+                    <li key={n.label} className={n.live ? 'is-live' : ''}>
+                        <span className="number-value">{n.value}</span>
+                        <span className="number-label">{n.label}</span>
                     </li>
                 ))}
             </ul>
-            <dl className="rating">
-                <div>
-                    <dt>Rated</dt>
-                    <dd>PG, for Pretty Gorgeous</dd>
-                </div>
-                <div>
-                    <dt>Runtime</dt>
-                    <dd>{days.toLocaleString('en-GB')} days and counting</dd>
-                </div>
-                <div>
-                    <dt>Genre</dt>
-                    <dd>Romance, comedy, occasional drama about dinner</dd>
-                </div>
-            </dl>
         </section>
     );
 }
 
-export function Credits({ her, him }) {
+export function Finale({ her, him }) {
     return (
-        <footer className="credits">
-            <p className="credits-title">
-                {her} &amp; {him}
+        <footer className="finale">
+            <Sparkle className="fin-s1" />
+            <Sparkle className="fin-s2" />
+            <p className="finale-kicker">25 December 2026</p>
+            <p className="finale-title">
+                Happy 3rd anniversary, <span>{her}</span>
             </p>
-            <dl className="credits-list">
-                {credits.map(([k, v]) => (
-                    <div key={k}>
-                        <dt>{k}</dt>
-                        <dd>{v}</dd>
-                    </div>
-                ))}
-            </dl>
-            <div className="footer-cats" aria-hidden="true">
-                <SittingCat />
+            <div className="finale-cats" aria-hidden="true">
+                <SittingCat tone="red" />
                 <svg className="orn footer-heart" viewBox="0 0 24 22">
                     <path d="M12 21 C 4 14 0 10 0 6 A6 6 0 0 1 12 4 A6 6 0 0 1 24 6 C24 10 20 14 12 21Z" />
                 </svg>
-                <SittingCat tone="red" flip />
+                <SittingCat flip />
             </div>
-            <p className="credits-end">
-                No cats were harmed in the making of this marriage.
+            <p className="finale-sign">
+                Here is to nine more lives together.
                 <br />
-                Valid for a lifetime. Not transferable.
+                Love, {him}
             </p>
         </footer>
     );
